@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feedback Educa TODOS - Envie suas sugestões e comentários.">
+    <title>Feedback - Educa TODOS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #EFE4CA;
+            font-family: Arial, sans-serif;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+        }
+
+        header {
+            background-color: #EFE4CA;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-top {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-top ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-top ul li {
+            margin-left: 15px;
+        }
+
+        .nav-top ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #25989C;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .logout-btn {
+            background-color: #E74C3C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .logout-btn:hover {
+            background-color: #C0392B;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .logo, .logo-contrast {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo-contrast {
+            display: none; /* Ocultar por padrão */
+        }
+
+        .nav-main {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .nav-main ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-main ul li {
+            margin: 0 10px;
+        }
+
+        .nav-main ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #25989C;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .nav-main ul li a:hover {
+            background-color: #1e7a78;
+        }
+
+        .font-adjust-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .font-adjust-buttons button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #25989C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .font-adjust-buttons button:hover {
+            background-color: #1e7a78;
+        }
+
+        footer {
+            background-color: #EFE4CA;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button:focus, a:focus {
+            outline: 2px solid #FFCC00;
+            outline-offset: 4px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #EFE4CA;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #25989C; /* Cor do botão */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #1e7a78; /* Cor ao passar o mouse */
+        }
+
+        /* CSS para alto contraste */
+        .high-contrast .logo {
+            display: none; /* Esconde a logo normal */
+        }
+
+        .high-contrast .logo-contrast {
+            display: block; /* Exibe a logo de alto contraste */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #EFE4CA;
+        }
+        .full-width {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #EFE4CA; /* Cor de fundo */
+            text-align: center; /* Centraliza o texto */
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .music-button {
+            position: absolute; /* Posiciona o botão */
+            top: 20px; /* Distância do topo */
+            right: 20px; /* Distância da direita */
+            width: 50px; /* Largura do botão */
+            height: 50px; /* Altura do botão */
+            background-color: #25989C; /* Nova cor de fundo do botão */
+            color: white; /* Cor do texto do botão */
+            border: none; /* Remove a borda */
+            border-radius: 50%; /* Botão redondo */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+        }
+        .music-button:hover {
+            background-color: #218C8D; /* Cor do botão ao passar o mouse */
+            transform: scale(1.05); /* Aumenta levemente o tamanho do botão */
+        }
+        .play-icon {
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid white; /* Parte esquerda do triângulo */
+            border-top: 10px solid transparent; /* Parte superior do triângulo */
+            border-bottom: 10px solid transparent; /* Parte inferior do triângulo */
+        }
+        .pause-icon {
+            display: flex;
+            gap: 5px; /* Espaço entre as barras */
+        }
+        .pause-icon div {
+            width: 8px; /* Largura das barras */
+            height: 20px; /* Altura das barras */
+            background-color: white; /* Cor das barras */
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="musica/musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio> 
+
+    <header>
+        <div class="header-top">
+            <nav class="nav-top">
+                <ul id="nav-links">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="criar-conta.html">Criar Conta</a></li>
+                </ul>
+                <button id="logoutButton" class="logout-btn" style="display: none;" onclick="logout()">Logout</button>
+            </nav>
+        </div>
+        <div class="logo-container">
+            <a href="index.html"><img src="Imagens/LOGO.png" alt="Logo Educa TODOS" class="logo" id="logo"></a>
+            <a href="index.html"><img src="Imagens/LOGO-ALTA-CONTRASTE.png" alt="Logo Alto Contraste Educa TODOS" class="logo-contrast" id="logoContrast"></a>
+        </div>
+        <nav class="nav-main">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="conteudo.html">Conteúdo</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+        <div class="font-adjust-buttons">
+            <button onclick="adjustFontSize(-1)">Diminuir Fonte</button>
+            <button onclick="adjustFontSize(1)">Aumentar Fonte</button>
+            <button onclick="toggleContrast()">Alto Contraste</button>
+        </div>
+        <button class="music-button" id="musicButton" onclick="toggleMusic()">▶️</button>
+    </header>
+
+    <main>
+        <section id="feedback">
+            <div class="container">
+                <h1>Feedback</h1>
+                <p>Envie suas sugestões e comentários para melhorar nosso site.</p>
+                <textarea id="feedbackMessage" placeholder="Escreva seu feedback aqui..."></textarea>
+                <button class="submit-button" onclick="submitFeedback()">Enviar Feedback</button> <!-- Botão com a nova cor -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Educa TODOS. Todos os direitos reservados.</p>
+    </footer>
+    <button class="music-button" onclick="toggleMusic()">
+        <div id="musicIcon" class="play-icon"></div>
+    </button>
+
+    <script>
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            if (music.paused) {
+                music.play();
+                musicIcon.className = "pause-icon"; // Muda para o ícone de pause
+                musicIcon.innerHTML = '<div></div><div></div>'; // Adiciona as barras do ícone de pause
+            } else {
+                music.pause();
+                musicIcon.className = "play-icon"; // Muda para o ícone de play
+                musicIcon.innerHTML = ''; // Limpa o conteúdo do ícone de play
+            }
+        }
+    </script>
+
+    <script>
+        // Verificar se o usuário está logado
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const navLinks = document.getElementById('nav-links');
+            const logoutButton = document.getElementById('logoutButton');
+
+            if (isLoggedIn) {
+                navLinks.style.display = 'none'; // Ocultar links de login e criação de conta
+                logoutButton.style.display = 'block'; // Mostrar botão de logout
+            } else {
+                navLinks.style.display = 'flex'; // Mostrar links de login e criação de conta
+                logoutButton.style.display = 'none'; // Ocultar botão de logout
+            }
+        }
+        // Enviar feedback (apenas simulação)
+        function submitFeedback() {
+            const feedbackMessage = document.getElementById('feedbackMessage').value;
+            if (feedbackMessage) {
+                alert('Feedback enviado: ' + feedbackMessage);
+                document.getElementById('feedbackMessage').value = ''; // Limpa a textarea
+            } else {
+                alert('Por favor, escreva seu feedback antes de enviar.');
+            }
+        }
+
+        // Ajustar o tamanho da fonte
+        function adjustFontSize(change) {
+            const body = document.body;
+            const currentSize = parseFloat(getComputedStyle(body).fontSize);
+            body.style.fontSize = (currentSize + change) + 'px';
+        }
+
+        // Alternar entre alto contraste
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        // Função de logout
+        function logout() {
+            localStorage.setItem('isLoggedIn', 'false');
+            window.location.href = 'index.html'; // Redireciona para a página inicial
+        }
+
+        // Alternar a música de fundo
+        let isMusicPlaying = false;
+    function toggleMusic() {
+        const music = document.getElementById('backgroundMusic');
+        const musicButton = document.getElementById('musicButton');
+
+        if (isMusicPlaying) {
+            music.pause();
+            musicButton.textContent = '▶️'; // Ícone de play
+        } else {
+            music.play();
+            musicButton.textContent = '⏸️'; // Ícone de pause
+        }
+        isMusicPlaying = !isMusicPlaying;
+    }
+
+        checkLoginStatus(); // Verifica o estado de login ao carregar a página
+    </script>
+
+
+</body>
+</html>

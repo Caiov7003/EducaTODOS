@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Criar Conta - Educa TODOS">
+    <title>Criar Conta - Educa TODOS</title>
+    <style>
+        body {
+            background-color: #EFE4CA;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #EFE4CA; /* Alterado para #EFE4CA */
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            color: #333; /* Cor padrão do cabeçalho */
+            transition: background-color 0.3s, color 0.3s; /* Transição suave */
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-top ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-top ul li {
+            margin-left: 15px;
+        }
+
+        .nav-top ul li a {
+            text-decoration: none;
+            color: #fff; /* Cor do texto */
+            background-color: #25989C; /* Cor de fundo dos botões */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-top ul li a:hover {
+            background-color: #1e7a78;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            font-size: 2em;
+            color: #152F34;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #152F34;
+        }
+
+        .form-container input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-container input:focus {
+            border-color: #25989C;
+            outline: none;
+        }
+
+        .form-container button {
+            padding: 12px;
+            background-color: #25989C;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #1e7a78;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            flex: 1;
+            margin-right: 10px; /* Espaçamento entre os botões */
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #EFE4CA; /* Cor padrão do rodapé */
+            color: #000; /* Cor padrão do texto no rodapé */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            transition: background-color 0.3s, color 0.3s; /* Transição suave */
+        }
+
+        /* Música */
+        .music {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px; /* Adicionado padding para manter o layout consistente */
+            background-color: #EFE4CA; /* Fundo da seção música alterado para #EFE4CA */
+            border-radius: 10px; /* Bordas arredondadas */
+            color: #152F34; /* Texto na seção música */
+        }
+
+        /* Alto Contraste */
+        body.high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+
+        body.high-contrast header {
+            background-color: #000; /* Cabeçalho preto no modo alto contraste */
+            color: #fff; /* Cor do texto no cabeçalho no modo alto contraste */
+        }
+
+        body.high-contrast .form-container {
+            background-color: #000;
+        }
+
+        body.high-contrast .nav-top ul li a {
+            background-color: #25989C; /* Cor de fundo dos botões permanece igual */
+            color: #fff; /* Cor do texto no modo alto contraste */
+        }
+
+        body.high-contrast .nav-top ul li a:hover {
+            background-color: #1e7a78;
+        }
+
+        body.high-contrast .form-container label,
+        body.high-contrast .form-container h1,
+        body.high-contrast .form-container input,
+        body.high-contrast .form-container button {
+            color: #fff; /* Todas as palavras no formulário ficam brancas */
+        }
+
+        body.high-contrast .music {
+            background-color: #000; /* Fundo da seção música preto no modo alto contraste */
+            color: #fff; /* Texto branco na seção música no modo alto contraste */
+        }
+
+        body.high-contrast footer {
+            background-color: #000; /* Rodapé preto no modo alto contraste */
+            color: #fff; /* Texto branco no rodapé no modo alto contraste */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <nav class="nav-top">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h1>Criar Conta</h1>
+            <form id="createAccountForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Criar Conta</button>
+                <div id="message" class="error-message"></div>
+            </form>
+            <div class="button-group">
+                <button onclick="increaseFontSize()">Aumentar Fonte</button>
+                <button onclick="decreaseFontSize()">Diminuir Fonte</button>
+                <button onclick="toggleContrast()">Ativar Alto Contraste</button>
+            </div>
+        </section>
+
+        <div class="music">
+            <h2>Uma Música para Te Inspirar!</h2>
+            <audio controls>
+                <source src="musica/musica.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Educa TODOS. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+
+            // Verifica se já existe um usuário com o mesmo email
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.email === email);
+
+            if (userExists) {
+                message.textContent = 'Já existe uma conta com este email.';
+            } else {
+                // Adiciona o novo usuário ao localStorage
+                users.push({ email, password });
+                localStorage.setItem('users', JSON.stringify(users));
+                message.textContent = 'Conta criada com sucesso! Você pode fazer login agora.';
+                document.getElementById('createAccountForm').reset(); // Limpa o formulário
+                
+                // Redireciona para a página de login após 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+            }
+        });
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

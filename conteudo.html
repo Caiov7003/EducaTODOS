@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conteúdo Educa TODOS - Recursos educacionais acessíveis para todos os alunos.">
+    <title>Conteúdo - Educa TODOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        header {
+            background-color: #EFE4CA;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-top {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-top ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-top ul li {
+            margin-left: 15px;
+        }
+
+        .nav-top ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #25989C;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .logout-btn {
+            background-color: #E74C3C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .logout-btn:hover {
+            background-color: #C0392B;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .logo, .logo-contrast {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo-contrast {
+            display: none;
+        }
+
+        .nav-main {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .nav-main ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-main ul li {
+            margin: 0 10px;
+        }
+
+        .nav-main ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #25989C;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .nav-main ul li a:hover {
+            background-color: #1e7a78;
+        }
+
+        .font-adjust-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .font-adjust-buttons button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #25989C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .font-adjust-buttons button:hover {
+            background-color: #1e7a78;
+        }
+
+        footer {
+            background-color: #EFE4CA;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button:focus, a:focus {
+            outline: 2px solid #FFCC00;
+            outline-offset: 4px;
+        }
+
+        .high-contrast {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .high-contrast a {
+            color: #FFFF00;
+        }
+
+        .dark-mode {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .dark-mode a {
+            color: #FFCC00;
+        }
+
+        .dark-mode button {
+            background-color: #333333;
+            color: #FFFFFF;
+        }
+
+        .dark-mode button:hover {
+            background-color: #555555;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #EFE4CA;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: auto;
+        }
+
+        #quizSection {
+            display: none;
+            margin-top: 20px;
+			max-height: 300px;
+        }
+
+        #startQuizButton:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #EFE4CA;
+        }
+        .full-width {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #EFE4CA; /* Cor de fundo */
+            text-align: center; /* Centraliza o texto */
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .music-button {
+            position: absolute; /* Posiciona o botão */
+            top: 20px; /* Distância do topo */
+            right: 20px; /* Distância da direita */
+            width: 50px; /* Largura do botão */
+            height: 50px; /* Altura do botão */
+            background-color: #25989C; /* Nova cor de fundo do botão */
+            color: white; /* Cor do texto do botão */
+            border: none; /* Remove a borda */
+            border-radius: 50%; /* Botão redondo */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+        }
+        .music-button:hover {
+            background-color: #218C8D; /* Cor do botão ao passar o mouse */
+            transform: scale(1.05); /* Aumenta levemente o tamanho do botão */
+        }
+        .play-icon {
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid white; /* Parte esquerda do triângulo */
+            border-top: 10px solid transparent; /* Parte superior do triângulo */
+            border-bottom: 10px solid transparent; /* Parte inferior do triângulo */
+        }
+        .pause-icon {
+            display: flex;
+            gap: 5px; /* Espaço entre as barras */
+        }
+        .pause-icon div {
+            width: 8px; /* Largura das barras */
+            height: 20px; /* Altura das barras */
+            background-color: white; /* Cor das barras */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EFE4CA;
+            padding: 20px;
+        }
+        .content-section {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #fff;
+        }
+        
+        
+        
+   
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="musica/musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio> 
+
+    <header>
+        <div class="header-top">
+            <nav class="nav-top">
+                <ul id="nav-links">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="criar-conta.html">Criar Conta</a></li>
+                </ul>
+                <button id="logoutButton" class="logout-btn" style="display: none;">Logout</button>
+            </nav>
+        </div>
+        <div class="logo-container">
+            <a href="index.html"><img src="Imagens/LOGO.png" alt="Logo Educa TODOS" class="logo" id="logo"></a>
+            <a href="index.html"><img src="Imagens/LOGO-ALTA-CONTRASTE.png" alt="Logo Alto Contraste Educa TODOS" class="logo-contrast" id="logoContrast"></a>
+        </div>
+        <nav class="nav-main">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="conteudo.html">Conteúdo</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+        <div class="font-adjust-buttons">
+            <button onclick="alterarTamanhoRadio(0.1), adjustFontSize(-1)">Diminuir Fonte</button>
+            <button onclick="alterarTamanhoRadio(-0.1), adjustFontSize(1)">Aumentar Fonte</button>
+            <button onclick="toggleContrast()">Alto Contraste</button>
+        </div>
+              <button class="music-button" id="musicButton" onclick="toggleMusic()">▶️</button>
+    </header>
+    <p>Baixe o arquivo Word com o conteúdo para estudo clicando no ícone abaixo:</p>
+    <a href="Arquivo/Conteúdo de Estudo.docx" download="Conteudo_Estudo.docx" title="Baixar Conteúdo para Estudo">
+        <i class="fas fa-download" style="font-size: 40px; color: #25989C;"></i> <!-- Ícone de download -->
+    </a>
+
+    <main>
+        <section id="content">
+            <div class="container">
+                <h2>QUIZ</h2>
+                <label for="yearSelect">Selecione o Ano do Ensino Fundamental:</label>
+                <select id="yearSelect" onchange="enableQuizButton()">
+                    <option value="">Selecione</option>
+                    <option value="1">1° Ano</option>
+                    <option value="2">2° Ano</option>
+                    <option value="3">3° Ano</option>
+                    <option value="4">4° Ano</option>
+                    <option value="5">5° Ano</option>
+                    <option value="6">6° Ano</option>
+                    <option value="7">7° Ano</option>
+                    <option value="8">8° Ano</option>
+                    <option value="9">9° Ano</option>
+                </select>
+			
+                <button id="startQuizButton" onclick="startQuiz()" disabled style="margin-top: 10px; background-color: #25989C; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 16px;">Começar Quiz</button>
+			</div>
+                <div id="quizSection" style="display: none;">
+                    <h2>Quiz</h2>
+                    <div id="quizQuestions"></div>
+                </div>
+             </section>
+        
+   
+
+    <footer>
+        <p>&copy; 2024 Educa TODOS. Todos os direitos reservados.</p>
+    </footer>
+
+    <button class="music-button" onclick="toggleMusic()">
+        <div id="musicIcon" class="play-icon"></div>
+    </button>
+
+    <script>
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            if (music.paused) {
+                music.play();
+                musicIcon.className = "pause-icon"; // Muda para o ícone de pause
+                musicIcon.innerHTML = '<div></div><div></div>'; // Adiciona as barras do ícone de pause
+            } else {
+                music.pause();
+                musicIcon.className = "play-icon"; // Muda para o ícone de play
+                musicIcon.innerHTML = ''; // Limpa o conteúdo do ícone de play
+            }
+        }
+    </script>
+    
+
+    <script>
+		let escalaAtual = 1;
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const navLinks = document.getElementById("nav-links");
+            const logoutButton = document.getElementById("logoutButton");
+
+            if (isLoggedIn) {
+                navLinks.style.display = "none"; // Oculta links de login e criar conta
+                logoutButton.style.display = "block"; // Exibe botão de logout
+            } else {
+                logoutButton.style.display = "none"; // Oculta botão de logout
+            }
+        });
+		
+		function resetTamanhoRadio() {
+			
+            // Obtém todos os elementos de input do tipo radio
+            const radios = document.querySelectorAll('input[type="radio"]');
+            // Aplica a escala para diminuir o tamanho de cada botão de rádio
+            radios.forEach(radio => {
+                radio.style.transform = "scale(1)";
+            });
+        }
+		
+		function alterarTamanhoRadio(change) {
+			
+            // Obtém todos os elementos de input do tipo radio
+            const radios = document.querySelectorAll('input[type="radio"]');
+			escalaAtual -= change;
+            // Aplica a escala para diminuir o tamanho de cada botão de rádio
+            radios.forEach(radio => {
+                radio.style.transform = `scale(${escalaAtual})`;
+            });
+        }
+
+        function adjustFontSize(change) {
+            const body = document.body;
+            const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+            body.style.fontSize = (currentSize + change) + 'px';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle("high-contrast");
+            const logo = document.getElementById("logo");
+            const logoContrast = document.getElementById("logoContrast");
+            if (document.body.classList.contains("high-contrast")) {
+                logo.style.display = "none";
+                logoContrast.style.display = "block";
+            } else {
+                logo.style.display = "block";
+                logoContrast.style.display = "none";
+            }
+            
+        }
+
+        function enableQuizButton() {
+            const yearSelect = document.getElementById("yearSelect");
+            const startQuizButton = document.getElementById("startQuizButton");
+            startQuizButton.disabled = !yearSelect.value;
+        }
+
+        function startQuiz() {
+            const yearSelect = document.getElementById("yearSelect").value;
+            const quizSection = document.getElementById("quizSection");
+            quizSection.style.display = "block";
+            document.getElementById("quizQuestions").innerHTML = createQuiz(yearSelect);
+        }
+		
+		function portugues(ano1){
+			ptquest = {
+				"1":[{ question: "Qual a função de um verbo na frase?", options: ["Indicar uma ação", "Nomear um objeto", "Descrever um lugar", "Conectar ideias"], answer: "Indicar uma ação" },
+				{ question: "O que é uma sílaba?", options: ["Uma letra", "Um conjunto de letras que formam uma palavra", "Um som que compõe uma palavra", "Uma frase"], answer: "Uma letra" }],
+				"2":[{ question: "O que é um adjetivo?", options: ["Uma palavra que indica uma ação", "Uma palavra que descreve um substantivo", "Uma palavra que conecta ideias", "Uma palavra que expressa emoções"], answer: "Uma palavra que descreve um substantivo" },
+                { question: "O que é uma fábula?", options: ["Uma história verdadeira", "Um relato sobre o cotidiano", "Um poema", "Um conto de fadas"], answer: "Um relato sobre o cotidiano" }],
+				"3":[{ question: "O que é uma crônica?", options: ["Uma narrativa fictícia", "Um relato sobre o cotidiano", "Um poema", "Um conto de fadas"], answer: "Um relato sobre o cotidiano" },
+                { question: "O que é uma rima?", options: ["Uma repetição de sons no final dos versos", "Um tipo de prosa", "Uma narrativa longa", "Uma forma de escrever cartas"], answer: "Uma repetição de sons no final dos versos" }],
+				"4":[{ question: "O que é uma narrativa?", options: ["Uma história contada", "Um poema", "Um texto científico", "Um tipo de música"], answer: "Uma história contada" },
+                { question: "O que são advérbios?", options: ["Palavras que modificam verbos", "Palavras que nomeiam objetos", "Palavras que conectam ideias", "Palavras que expressam emoções"], answer: " Palavras que modificam verbos" }],
+				"5":[{ question: "O que é um ensaio?", options: ["Uma apresentação teatral", "Um texto que expressa a opinião do autor", "Um tipo de conto", "Um poema"], answer: "Um texto que expressa a opinião do autor" },
+                { question: "O que são pronomes?", options: ["Palavras que nomeiam objetos", "Palavras que substituem substantivos", "Palavras que conectam frases", " Palavras que indicam ação"], answer: " Palavras que substituem substantivos" }],
+				"6":[{ question: " O que é um substantivo?", options: [" Uma palavra que substitui um verbo", "Uma palavra que nomeia seres, objetos ou lugares", "Uma palavra que indica ação", "Uma palavra que conecta frases"], answer: "Uma palavra que nomeia seres, objetos ou lugares" },
+                { question: "O que é um sujeito em uma oração?", options: ["O verbo da frase", "Quem pratica ou sofre a ação expressa pelo verbo", "O objeto direto da frase", " Uma palavra que indica tempo"], answer: " Quem pratica ou sofre a ação expressa pelo verbo" }],
+				"7":[{ question: "O que é uma oração subordinada?", options: ["Uma oração que depende de outra para ter sentido completo", "Uma oração que expressa uma ordem", "Uma oração que contém apenas um verbo", "Uma oração independente"], answer: "Uma oração que depende de outra para ter sentido completo" },
+                { question: " O que é um predicado?", options: [" A parte da oração que fala sobre o sujeito", "A palavra que substitui o sujeito", "Um tipo de advérbio", "O objeto direto da frase"], answer: " A parte da oração que fala sobre o sujeito" }],
+				"8":[{ question: " O que é um verbo intransitivo?", options: ["Um verbo que precisa de complemento", "Um verbo que não precisa de complemento", " Um verbo que indica ação contínua", "Um verbo que só aparece no passado"], answer: "Um verbo que não precisa de complemento" },
+                { question: "  O que é um pronome relativo?", options: [" Um pronome que se refere a um substantivo já mencionado", "Um pronome que substitui o verbo", "Um pronome que indica posse", "Um pronome que expressa ação"], answer: " Um pronome que se refere a um substantivo já mencionado" }],
+				"9":[{ question: " O que é uma oração coordenada?", options: [" Uma oração que depende de outra", "Uma oração que tem sentido completo e é independente", "Uma oração que expressa tempo", "Uma oração que não tem sujeito"], answer: "Uma oração que tem sentido completo e é independente" },
+                { question: " O que é uma metáfora?", options: ["Um tipo de comparação direta", " Uma figura de linguagem que estabelece uma relação implícita entre duas coisas", "Uma expressão que indica exagero", "Um tipo de aliteração"], answer: "Uma figura de linguagem que estabelece uma relação implícita entre duas coisas" }]
+			}
+			
+			return ptquest[ano1];
+		}
+		
+		function matematica(ano1){
+			matquest = {
+				"1":[{ question: "Quanto é 5 + 3?", options: ["6", "7", "8", "9"], answer: "8" },
+				{ question: "O que é um triângulo?", options: ["Uma figura com quatro lados", "Uma figura com três lados", "Uma figura com cinco lados", "Uma figura com dois lados"], answer: "Uma figura com três lados" }],
+				"2":[{ question: "Quanto é 7 - 2", options: ["4", "5", "6", "3"], answer: "5" },
+                { question: "O que é uma tabela?", options: ["Um tipo de alimento", "Uma forma de organizar informações", "Uma figura geométrica", "Uma música"], answer: "Uma forma de organizar informações" }],
+				"3":[{ question: "Qual é a tabela de multiplicação de 3?", options: ["1, 2, 3, 4", "3, 6, 9, 12", "2, 4, 6, 8", "1, 3, 5, 7"], answer: "3, 6, 9, 12" },
+                { question: "O que é um ângulo reto?", options: ["Um ângulo menor que 90 graus", "Um ângulo igual a 90 graus", "Um ângulo maior que 90 graus", "Um ângulo que não existe"], answer: "Um ângulo igual a 90 graus" }],
+				"4":[{ question: "Quanto é 15 ÷ 3?", options: ["5", "10", "3", "8"], answer: "5" },
+                { question: "O que é um ângulo agudo?", options: ["Um ângulo menor que 90 graus", "Um ângulo igual a 90 graus", "Um ângulo maior que 90 graus", "Um ângulo de 180 graus"], answer: "Um ângulo menor que 90 graus" }],
+				"5":[{ question: " Qual é o valor de 2²?", options: ["4", "2", "8", "16"], answer: "4" },
+                { question: "O que é um número primo?", options: ["Um número que só é divisível por 1 e por ele mesmo", "Um número par", "Um número ímpar", "Um número que pode ser dividido por vários números"], answer: "Um número que só é divisível por 1 e por ele mesmo" }],
+				"6":[{ question: " Quanto é 3 × 8?", options: ["16", "21", "24", "32"], answer: "24" },
+                { question: "Qual é o perímetro de um quadrado de lado 6 cm?", options: ["12 cm", "18 cm", "24 cm", "36 cm"], answer: "24 cm" }],
+				"7":[{ question: "Quanto é 25% de 200?", options: ["25", "50", "100", "75"], answer: "50" },
+                { question: "Qual é a área de um retângulo de 4 cm de largura e 10 cm de comprimento?", options: ["14 cm²", " 20 cm²", "40 cm²", "400 cm²"], answer: "40 cm²" }],
+				"8":[{ question: "Qual é o valor de √49?", options: ["6", "7", "8", "9"], answer: "7" },
+                { question: "Se uma fração tem numerador 3 e denominador 5, qual é o seu valor decimal?", options: ["0,25", "0,6", "0,75", "1.25"], answer: "0,6" }],
+				"9":[{ question: "Qual é a fórmula para calcular a área de um triângulo?", options: ["Base × Altura", "Base × Altura ÷ 2", "Base ÷ Altura", "Base + Altura × 2"], answer: "Base × Altura ÷ 2" },
+                { question: "Quanto é 5²?", options: ["10", "20", "25", "30"], answer: "25" }]
+			}
+			
+			return matquest[ano1];
+		}
+		
+		function ciencias(ano1){
+			cienquest = {
+				"1":[{ question: "Qual dos seguintes é um animal?", options: ["Árvore", "Pedra", "Cachorro", "Água"], answer: "Cachorro" },
+				{ question: "O que é um ser vivo?", options: ["Algo que não respira", "Algo que pode crescer e se reproduzir", "Algo que não se movimenta", "Algo que não tem células"], answer: "Algo que pode crescer e se reproduzir" }],
+				"2":[{ question: "O que é um habitat?", options: ["Um tipo de animal", "O lugar onde um ser vivo vive", "Uma planta", "Um clima"], answer: "O lugar onde um ser vivo vive" },
+                { question: "Qual é a função das raízes das plantas?", options: ["Produzir flores", "Absorver água e nutrientes do solo", "Fazer fotossíntese", "Produzir sementes"], answer: "Absorver água e nutrientes do solo" }],
+				"3":[{ question: "O que é um ecossistema?", options: ["Um tipo de planta", "Um conjunto de seres vivos e o ambiente onde vivem", "Um lugar sem vida", "Um clima específico"], answer: "Um conjunto de seres vivos e o ambiente onde vivem" },
+                { question: "Qual é o principal órgão do sistema circulatório?", options: ["O pulmão", "O coração", "O estômago", "O fígado"], answer: "O coração" }],
+				"4":[{ question: "O que é fotossíntese?", options: ["O processo de respiração das plantas", " O processo de produção de alimento pelas plantas", "O crescimento das plantas", "A polinização das flores"], answer: "O processo de produção de alimento pelas plantas" },
+                { question: "O que são organismos decompositores?", options: ["Organismos que produzem alimento", "Organismos que consomem outros seres vivos", "Organismos que quebram a matéria orgânica", " Organismos que vivem em ambientes extremos"], answer: "Organismos que quebram a matéria orgânica" }],
+				"5":[{ question: " O que é um átomo?", options: ["A menor unidade de um elemento químico", " Uma célula", "Um tipo de molécula", " Uma bactéria"], answer: "A menor unidade de um elemento químico" },
+                { question: " O que é o sistema solar?", options: [" O conjunto de estrelas", "O conjunto de planetas que orbitam o sol", "Um tipo de galáxia", "Uma formação rochosa"], answer: "O conjunto de planetas que orbitam o sol" }],
+				"6":[{ question: "O que são seres vivos?", options: ["Organismos que nascem, crescem, reproduzem-se e morrem", "Objetos que não possuem células", "Rochas e minerais", "Seres microscópicos que não se movem"], answer: "Organismos que nascem, crescem, reproduzem-se e morrem" },
+                { question: "O que é a cadeia alimentar?", options: ["Um ciclo de nutrientes", "A sequência de organismos que se alimentam uns dos outros", "A produção de energia pelas plantas", "O processo de respiração"], answer: "A sequência de organismos que se alimentam uns dos outros" }],
+				"7":[{ question: "O que são os ácidos nucleicos?", options: ["Moléculas responsáveis pela digestão", "Substâncias que constituem o DNA e o RNA", "Minerais encontrados no solo", "Componentes de vitaminas"], answer: "Substâncias que constituem o DNA e o RNA" },
+                { question: "Qual é a função dos pulmões no corpo humano?", options: ["Produzir nutrientes", "Transportar sangue", "Realizar as trocas gasosas, absorvendo oxigênio e eliminando dióxido de carbono", "Produzir energia"], answer: "Realizar as trocas gasosas, absorvendo oxigênio e eliminando dióxido de carbono" }],
+				"8":[{ question: "Qual é a função dos glóbulos vermelhos no corpo humano?", options: ["Produzir anticorpos", "Transportar oxigênio", "Filtrar o sangue", "Produzir nutrientes"], answer: "Transportar oxigênio" },
+                { question: "O que é o ciclo da água?", options: ["O movimento contínuo da água entre a Terra, o ar e os seres vivos", "A formação de rochas a partir da água", "O processo de fotossíntese", "A poluição dos oceanos"], answer: "O movimento contínuo da água entre a Terra, o ar e os seres vivos" }],
+				"9":[{ question: "O que são células-tronco?", options: ["Células que podem se transformar em qualquer tipo de célula do corpo", "Células que causam doenças", "Células responsáveis pela digestão", "Células que não têm núcleo"], answer: "Células que podem se transformar em qualquer tipo de célula do corpo" },
+                { question: "O que é a fotossíntese?", options: ["O processo pelo qual as plantas produzem seu alimento a partir da luz solar", " O processo de respiração dos animais", "A decomposição de matéria orgânica", "A absorção de nutrientes pelo solo"], answer: "O processo pelo qual as plantas produzem seu alimento a partir da luz solar" }]
+			} 
+			
+			return cienquest[ano1];
+		}
+		
+		function geografia(ano1){
+			geoquest = {
+				"1":[{ question: "O que é um continente?", options: ["Uma grande área de terra", "Um tipo de animal", "Um planeta", "Uma cidade"], answer: "Uma grande área de terra" },
+				{ question: "Qual é o maior continente do mundo?", options: ["América", "Europa", "Ásia", "África"], answer: "Ásia" }],
+				"2":[{ question: "O que é um mapa?", options: ["Uma fotografia", "Uma representação de um lugar", "Um tipo de livro", "Um desenho"], answer: "Uma representação de um lugar" },
+                { question: 'O que significa "norte" em um mapa?', options: ["A direção do sul", "A direção do leste", "A direção do oeste", "A direção do pôr do sol"], answer: "A direção do sul" }],
+				"3":[{ question: "O que é clima?", options: ["O tempo em um dia específico", "As condições atmosféricas em uma região durante um longo período", "Uma estação do ano", "Um tipo de fenômeno natural"], answer: "As condições atmosféricas em uma região durante um longo período" },
+                { question: "O que são biomas?", options: ["Áreas habitadas por seres humanos", "Regiões com características climáticas e ecológicas específicas", "Cidades grandes", "Tipos de rochas"], answer: "Regiões com características climáticas e ecológicas específicas" }],
+				"4":[{ question: "O que é uma capital?", options: ["Uma cidade pequena", " A cidade onde se encontra o governo de um país ou estado", "Uma cidade turística", " Uma cidade histórica"], answer: "A cidade onde se encontra o governo de um país ou estado" },
+                { question: "O que é uma rota?", options: ["Um tipo de alimento", "Um caminho a seguir", "Uma forma de transporte", "Uma cidade grande"], answer: "Um caminho a seguir" }],
+				"5":[{ question: "O que é uma zona rural?", options: ["Uma área urbana", "Uma área com grande concentração de pessoas", "Uma área de campo ou agricultura", "Uma área industrial"], answer: "Uma área de campo ou agricultura" },
+                { question: "O que é um rio?", options: ["Uma grande extensão de água salgada", "Uma corrente de água doce que flui para o mar ou para um lago", " Uma forma de relevo", "Uma montanha"], answer: "Uma corrente de água doce que flui para o mar ou para um lago" }],
+				"6":[{ question: "O que são fusos horários?", options: ["Divisões do dia", "Horários definidos pelas fases da lua", "Divisões da Terra em 24 partes, cada uma com um horário diferente", "O tempo de rotação da Terra"], answer: " Divisões da Terra em 24 partes, cada uma com um horário diferente" },
+                { question: "O que é a linha do Equador?", options: ["Um rio famoso", "Um paralelo imaginário que divide a Terra em hemisfério norte e sul", "Um meridiano que passa por Greenwich ", "Uma montanha no Brasil"], answer: "Um paralelo imaginário que divide a Terra em hemisfério norte e sul" }],
+				"7":[{ question: "O que é a erosão?", options: ["O desgaste da superfície terrestre causado por agentes como água e vento", "A formação de montanhas", "O movimento das placas tectônicas", "O ciclo de evaporação"], answer: "O desgaste da superfície terrestre causado por agentes como água e vento" },
+                { question: "O que são as placas tectônicas?", options: ["Grandes blocos de rocha que formam a crosta terrestre", "Correntes de ar na atmosfera", "Depósitos de minério", "Tipos de formações vegetais"], answer: "Grandes blocos de rocha que formam a crosta terrestre" }],
+				"8":[{ question: "O que é urbanização?", options: ["O aumento da população em áreas rurais", "O crescimento das cidades", "O desmatamento de florestas", "A construção de rodovias"], answer: "O crescimento das cidades" },
+                { question: "O que são as zonas climáticas da Terra?", options: ["Regiões com diferentes tipos de clima, como tropical, temperado e polar", "Zonas de maior biodiversidade", "Áreas com maior índice de urbanização", "Regiões que possuem diferentes tipos de relevo"], answer: "Regiões com diferentes tipos de clima, como tropical, temperado e polar" }],
+				"9":[{ question: "O que são recursos naturais renováveis?", options: ["Recursos que podem ser substituídos por outros", "Recursos que se regeneram naturalmente em um curto período de tempo", "Recursos que nunca se esgotam", "Recursos que são produzidos artificialmente"], answer: "Recursos que se regeneram naturalmente em um curto período de tempo" },
+                { question: "O que é o aquecimento global?", options: ["O aumento gradual da temperatura média da Terra", "A evaporação dos oceanos", " O aumento da população humana", "A expansão das cidades"], answer: "O aumento gradual da temperatura média da Terra" }]
+			}
+			
+			return geoquest[ano1];
+			
+		}
+		
+		function historia(ano1){
+			hisquest = {
+				"1":[{ question: 'O que significa a palavra "história"?', options: ["Contar sobre o presente", "Contar sobre o futuro", "Contar sobre o passado", "Contar sobre a imaginação"], answer: "Contar sobre o passado" },
+				{ question: "Quem foi um dos primeiros habitantes do Brasil?", options: ["Portugueses", "Índios", "Africanos", "Italianos"], answer: "Índios" }],
+				"2":[{ question: "O que foi a chegada dos portugueses ao Brasil?", options: ["A descoberta de uma nova terra", "A guerra entre os índios", "A fundação de uma cidade", "Um tipo de comércio"], answer: "A descoberta de uma nova terra" },
+                { question: 'Quem foi Pedro Álvares Cabral?', options: ["Um índio", "Um rei", "O descobridor do Brasil", "Um comerciante"], answer: "O descobridor do Brasil" }],
+				"3":[{ question: "O que foi a Independência do Brasil?", options: ["Um movimento para mudar de rei", "A liberdade do Brasil em relação a Portugal", "A fundação de uma nova cidade", "Uma guerra entre índios"], answer: "A liberdade do Brasil em relação a Portugal" },
+                { question: "Quem foi Dom Pedro I?", options: ["O primeiro imperador do Brasil", "Um famoso artista", "Um explorador", "Um índio"], answer: "O primeiro imperador do Brasil" }],
+				"4":[{ question: "O que foi a Revolução Industrial?", options: ["Um movimento artístico", "Um período de grandes mudanças na produção", "Uma guerra entre países", "Uma forma de governo"], answer: "Um período de grandes mudanças na produção" },
+                { question: "O que são civilizações?", options: ["Grupos de pessoas que vivem juntas", "Culturas organizadas com sistemas de governo e economia", "Um tipo de animal", "Um tipo de planta"], answer: "Culturas organizadas com sistemas de governo e economia" }],
+				"5":[{ question: "O que foi a Segunda Guerra Mundial?", options: [" Um conflito entre países", "Um movimento artístico", "Uma descoberta científica", "Uma forma de governo"], answer: " Um conflito entre países" },
+                { question: "O que foi a Era Medieval?", options: ["Um período da história marcado por guerras", "Um período de desenvolvimento científico", "Um período entre a Antiguidade e a Idade Moderna", "Um período de paz"], answer: "Um período entre a Antiguidade e a Idade Moderna" }],
+				"6":[{ question: "Quem foram os faraós?", options: [" Reis do Egito Antigo", "Habitantes das cavernas", "Soldados da Grécia Antiga", "Deuses da Mesopotâmia"], answer: " Reis do Egito Antigo" },
+                { question: "O que foi a pré-história?", options: ["O período anterior ao surgimento da escrita", "Um período cheio de guerras", "A era de ouro da Grécia", "O tempo de vida dos dinossauros"], answer: "O período anterior ao surgimento da escrita" }],
+				"7":[{ question: "O que foi o Renascimento?", options: ["Um período de grande desenvolvimento cultural e artístico na Europa", "Uma revolta camponesa", "A descoberta da América", "A independência de vários países africanos"], answer: "Um período de grande desenvolvimento cultural e artístico na Europa" },
+                { question: "O que foi a Revolução Francesa?", options: ["Um conflito entre a França e o Reino Unido", "Um movimento revolucionário que derrubou a monarquia e estabeleceu a república na França", "Uma guerra entre países europeus", "Um tratado de paz"], answer: "Um movimento revolucionário que derrubou a monarquia e estabeleceu a república na França" }],
+				"8":[{ question: "O que foi a Primeira Guerra Mundial?", options: ["Um conflito global que ocorreu entre 1914 e 1918, envolvendo várias nações", "Um conflito civil na França", "A luta pela independência dos Estados Unidos", "A queda do Império Romano"], answer: "Um conflito global que ocorreu entre 1914 e 1918, envolvendo várias nações" },
+                { question: "O que foi a Era Vargas no Brasil?", options: ["O período em que Getúlio Vargas governou o Brasil, de 1930 a 1945", "A época em que o Brasil foi colonizado por Portugal", "Um movimento de independência no Brasil", "A época de maior crescimento econômico do Brasil"], answer: "O período em que Getúlio Vargas governou o Brasil, de 1930 a 1945" }],
+				"9":[{ question: "O que foi a Revolução Industrial?", options: ["O processo de transformação econômica e social ocorrido na Inglaterra no século XVIII, marcado pela mecanização da produção", "A independência dos Estados Unidos", "A formação da União Europeia", "A guerra entre França e Reino Unido"], answer: "O processo de transformação econômica e social ocorrido na Inglaterra no século XVIII, marcado pela mecanização da produção" },
+                { question: "O que foi a Guerra Fria?", options: [" O confronto indireto entre Estados Unidos e União Soviética após a Segunda Guerra Mundial", "Um conflito militar entre países da Europa", "A luta pela independência de colônias na África", "A invasão da Normandia"], answer: "O confronto indireto entre Estados Unidos e União Soviética após a Segunda Guerra Mundial" }]
+			}
+			
+			return hisquest[ano1];
+			
+		}
+		
+		
+		function subjects(ano){
+			questionst = {
+				"1":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"2":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"3":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"4":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"5":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"6":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"7":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"8":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+				"9":portugues(ano).concat(matematica(ano), ciencias(ano), geografia(ano), historia(ano)),
+			}
+			return questionst[ano];
+		}
+		
+        function createQuiz(year) {
+            const questions = {
+                "1": subjects(year),
+                "2": subjects(year),
+                "3": subjects(year),
+                "4": subjects(year),
+                "5": subjects(year),
+                "6": subjects(year),
+                "7": subjects(year),
+                "8": subjects(year),
+                "9": subjects(year)
+            };
+
+            let output = '';
+            const selectedQuestions = questions[year] || [];
+
+            selectedQuestions.forEach((q, index) => {
+                output += `<div><h3>Pergunta ${index + 1}: ${q.question}</h3>`;
+                q.options.forEach(option => {
+                    output += `<label><input type="radio" name="question${index}" value="${option}"> ${option}</label><br>`;
+                });
+                output += `</div>`;
+            });
+
+            output += `<button style="margin-top: 10px; background-color: #25989C; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 16px;" onclick="checkAnswers(${year})">Enviar Respostas</button>`;
+            return output;
+        }
+
+        function checkAnswers(year) {
+            const questions = {
+                "1": [
+                    { answer: "Indicar uma ação" },
+                    { answer: "Uma letra" },
+					{ answer: "8" },
+                    { answer: "Uma figura com três lados" },
+					{ answer: "Cachorro" },
+					{ answer: "Algo que pode crescer e se reproduzir" },
+					{ answer: "Uma grande área de terra" },
+					{ answer: "Ásia" },
+					{ answer: "Contar sobre o passado" },
+					{ answer: "Índios" }
+                ],
+                "2": [
+                    { answer: "Uma palavra que descreve um substantivo" },
+                    { answer: "Uma história com animais que ensina uma lição" },
+					{ answer: "5" },
+                    { answer: "Uma forma de organizar informações" },
+					{ answer: "O lugar onde um ser vivo vive" },
+					{ answer: "Absorver água e nutrientes do solo" },
+					{ answer: "Uma representação de um lugar" },
+					{ answer: "A direção do sul" },
+					{ answer: "A descoberta de uma nova terra" },
+					{ answer: "O descobridor do Brasil" }
+                ],
+                "3": [
+                    { answer: "Um relato sobre o cotidiano" },
+                    { answer: "Uma repetição de sons no final dos versos" },
+					{ answer: "3, 6, 9, 12" },
+                    { answer: "Um ângulo igual a 90 graus" },
+					{ answer: "Um conjunto de seres vivos e o ambiente onde vivem" },
+					{ answer: "O coração" },
+					{ answer: "As condições atmosféricas em uma região durante um longo período" },
+					{ answer: "Regiões com características climáticas e ecológicas específicas" },
+					{ answer: "A liberdade do Brasil em relação a Portugal" },
+					{ answer: "O primeiro imperador do Brasil" }
+                ],
+                "4": [
+                    { answer: "Uma história contada" },
+                    { answer: "Palavras que modificam verbos" },
+					{ answer: "5" },
+                    { answer: "Um ângulo menor que 90 graus" },
+					{ answer: "O processo de produção de alimento pelas plantas" },
+					{ answer: "Organismos que quebram a matéria orgânica" },
+					{ answer: "A cidade onde se encontra o governo de um país ou estado" },
+					{ answer: "Um caminho a seguir" },
+					{ answer: "Um período de grandes mudanças na produção" },
+					{ answer: "Culturas organizadas com sistemas de governo e economia" }
+                ],
+                "5": [
+                    { answer: "Um texto que expressa a opinião do autor" },
+                    { answer: "Palavras que substituem substantivos" },
+					{ answer: "4" },
+                    { answer: "Um número que só é divisível por 1 e por ele mesmo" },
+					{ answer: "A menor unidade de um elemento químico" },
+					{ answer: "O conjunto de planetas que orbitam o sol" },
+					{ answer: "Uma área de campo ou agricultura" },
+					{ answer: "Uma corrente de água doce que flui para o mar ou para um lago" },
+					{ answer: "Um conflito entre países" },
+					{ answer: "Um período entre a Antiguidade e a Idade Moderna" }
+                ],
+                "6": [
+                    { answer: "Uma palavra que nomeia seres, objetos ou lugares" },
+                    { answer: "Quem pratica ou sofre a ação expressa pelo verbo" },
+					{ answer: "24" },
+                    { answer: "24 cm" },
+					{ answer: "Organismos que nascem, crescem, reproduzem-se e morrem" },
+					{ answer: "A sequência de organismos que se alimentam uns dos outros" },
+					{ answer: "Divisões da Terra em 24 partes, cada uma com um horário diferente" },
+					{ answer: "Um paralelo imaginário que divide a Terra em hemisfério norte e sul" },
+					{ answer: "Reis do Egito Antigo" },
+					{ answer: "O período anterior ao surgimento da escrita" }
+                ],
+                "7": [
+                    { answer: "Uma oração que depende de outra para ter sentido completo" },
+                    { answer: "A parte da oração que fala sobre o sujeito" },
+					{ answer: "50" },
+                    { answer: "40 cm²" },
+					{ answer: "Substâncias que constituem o DNA e o RNA" },
+					{ answer: "Realizar as trocas gasosas, absorvendo oxigênio e eliminando dióxido de carbono" },
+					{ answer: "O desgaste da superfície terrestre causado por agentes como água e vento" },
+					{ answer: "Grandes blocos de rocha que formam a crosta terrestre" },
+					{ answer: "Um período de grande desenvolvimento cultural e artístico na Europa" },
+					{ answer: "Um movimento revolucionário que derrubou a monarquia e estabeleceu a república na França" }
+                ],
+                "8": [
+                    { answer: "Um verbo que não precisa de complemento" },
+                    { answer: "Um pronome que se refere a um substantivo já mencionado" },
+					{ answer: "7" },
+                    { answer: "0,6" },
+					{ answer: "Transportar oxigênio" },
+					{ answer: "O movimento contínuo da água entre a Terra, o ar e os seres vivos" },
+					{ answer: "O crescimento das cidades" },
+					{ answer: "Regiões com diferentes tipos de clima, como tropical, temperado e polar" },
+					{ answer: "Um conflito global que ocorreu entre 1914 e 1918, envolvendo várias nações" },
+					{ answer: "O período em que Getúlio Vargas governou o Brasil, de 1930 a 1945" }
+                ],
+                "9": [
+                    { answer: "Uma oração que tem sentido completo e é independente" },
+                    { answer: " Uma figura de linguagem que estabelece uma relação implícita entre duas coisas" },
+					{ answer: "Base × Altura ÷ 2" },
+                    { answer: "25" },
+					{ answer: "Células que podem se transformar em qualquer tipo de célula do corpo" },
+					{ answer: "O processo pelo qual as plantas produzem seu alimento a partir da luz solar" },
+					{ answer: "Recursos que se regeneram naturalmente em um curto período de tempo" },
+					{ answer: "O aumento gradual da temperatura média da Terra" },
+					{ answer: "O processo de transformação econômica e social ocorrido na Inglaterra no século XVIII, marcado pela mecanização da produção" },
+					{ answer: "O confronto indireto entre Estados Unidos e União Soviética após a Segunda Guerra Mundial" }
+                ]
+            };
+
+            const selectedQuestions = questions[year] || [];
+            let score = 0;
+
+            selectedQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                if (selectedOption && selectedOption.value === q.answer) {
+                    score++;
+                }
+            });
+
+            alert(`Você acertou ${score} de ${selectedQuestions.length} perguntas!`);
+        }
+         // Alternar a música de fundo
+         let isMusicPlaying = false;
+    function toggleMusic() {
+        const music = document.getElementById('backgroundMusic');
+        const musicButton = document.getElementById('musicButton');
+
+        if (isMusicPlaying) {
+            music.pause();
+            musicButton.textContent = '▶️'; // Ícone de play
+        } else {
+            music.play();
+            musicButton.textContent = '⏸️'; // Ícone de pause
+        }
+        isMusicPlaying = !isMusicPlaying;
+    }
+
+    checkLoginStatus(); // Verifica o estado de login ao carregar a página
+</script> 
+ <script src="script.js"></script>
+
+    </script>
+</body>
+</html>

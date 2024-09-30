@@ -1,0 +1,179 @@
+/* Estilos Gerais */
+body {
+    background-color: #EFE4CA;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #EFE4CA;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.nav-main {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.nav-main ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-main ul li {
+    margin: 0 10px;
+}
+
+.nav-main ul li a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #25989C;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.nav-main ul li a:hover {
+    background-color: #1e7a78;
+}
+
+footer {
+    background-color: #EFE4CA;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    position: relative; /* Mude fixed para relative */
+    bottom: 0;
+    width: 100%;
+}
+
+
+button:focus, a:focus {
+    outline: 2px solid #FFCC00;
+    outline-offset: 4px;
+}
+
+/* Estilos para o Modo de Alto Contraste */
+.high-contrast {
+    background-color: #000000; /* Fundo preto */
+    color: #FFFFFF; /* Texto branco */
+}
+
+/* Links no modo alto contraste */
+.high-contrast a {
+    color: #FFFF00; /* Links amarelos */
+}
+
+/* Contêineres e elementos no modo alto contraste */
+.high-contrast .container,
+.high-contrast .quiz-container,
+.high-contrast header,
+.high-contrast footer {
+    background-color: #000000; /* Fundo preto */
+    color: #FFFFFF; /* Texto branco */
+}
+
+/* Estilo dos botões no modo alto contraste */
+.high-contrast .quiz-button,
+.high-contrast .toggle-button,
+.high-contrast .font-adjust-buttons button,
+.high-contrast .back-button,
+.high-contrast .nav-main ul li a {
+    background-color: #25989C; /* Cor dos botões */
+    color: #FFFFFF; /* Texto dos botões em branco */
+}
+
+/* Estilo dos botões no modo alto contraste ao passar o mouse */
+.high-contrast .quiz-button:hover,
+.high-contrast .toggle-button:hover,
+.high-contrast .font-adjust-buttons button:hover,
+.high-contrast .back-button:hover,
+.high-contrast .nav-main ul li a:hover {
+    background-color: #1e7a78; /* Fundo escuro dos botões e links ao passar o mouse */
+}
+
+/* Estilos para o Modo Escuro (opcional, se utilizado) */
+.dark-mode {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.dark-mode a {
+    color: #FFCC00;
+}
+
+.dark-mode button {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+.dark-mode button:hover {
+    background-color: #555555;
+}
+body {
+    overflow-y: auto; /* Permite rolagem vertical */
+    font-size: 16px; /* Tamanho base da fonte */
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #EFE4CA;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: auto; /* Permite rolagem interna, se necessário */
+}
+
+#quizSection {
+    display: none; /* Mantém o quiz oculto inicialmente */
+    margin-top: 20px;
+    text-align: center;
+    max-height: 700px; /* Altura máxima para o quiz */
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+}
+.full-width {
+    width: 100%; /* Faz com que a largura ocupe 100% da página */
+    padding: 20px; /* Adiciona um espaço interno */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+    background-color: #EFE4CA; /* Cor de fundo opcional */
+}
+.container {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.btn:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+html, body {
+    height: auto; /* Permite que a altura do body cresça conforme o conteúdo */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove preenchimento padrão */
+}
+
+.content-container {
+    padding: 20px; /* Exemplo de preenchimento */
+    background-color: #EFE4CA; /* Cor de fundo */
+}
+
+/* Isso é opcional, se você quiser forçar a barra de rolagem */
+body {
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical, se necessário */
+}

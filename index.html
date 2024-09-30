@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página Inicial - Educa TODOS">
+    <title>Início - Educa TODOS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos iguais ao da página conteúdo.html */
+        body {
+            background-color: #EFE4CA;
+            font-family: Arial, sans-serif;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+        }
+
+        header {
+            background-color: #EFE4CA;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+            position: relative; /* Para permitir o posicionamento absoluto do logout */
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-top {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-top ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-top ul li {
+            margin-left: 15px;
+        }
+
+        .nav-top ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #25989C;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .logout-btn {
+            background-color: #E74C3C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute; /* Posiciona o botão de logout */
+            top: 20px; /* Distância do topo */
+            left: 20px; /* Distância da esquerda */
+        }
+
+        .logout-btn:hover {
+            background-color: #C0392B;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .logo, .logo-contrast {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo-contrast {
+            display: none; /* Ocultar por padrão */
+        }
+
+        .nav-main {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .nav-main ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-main ul li {
+            margin: 0 10px;
+        }
+
+        .nav-main ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #25989C;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .nav-main ul li a:hover {
+            background-color: #1e7a78;
+        }
+
+        .font-adjust-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .font-adjust-buttons button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #25989C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .font-adjust-buttons button:hover {
+            background-color: #1e7a78;
+        }
+
+        footer {
+            background-color: #EFE4CA;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button:focus, a:focus {
+            outline: 2px solid #FFCC00;
+            outline-offset: 4px;
+        }
+
+        .high-contrast {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .high-contrast a {
+            color: #FFFF00;
+        }
+
+        .full-width {
+            width: 100%; /* Faz com que a largura ocupe 100% da página */
+            padding: 20px; /* Adiciona um espaço interno */
+            box-sizing: border-box; /* Inclui padding e border na largura total */
+            background-color: #EFE4CA; /* Cor de fundo opcional */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        h1 {
+            text-align: center; /* Centraliza o título */
+        }
+
+        p {
+            text-align: center; /* Centraliza o parágrafo */
+            max-width: 800px; /* Define uma largura máxima para o texto */
+            margin: 0 auto; /* Centraliza horizontalmente */
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #EFE4CA;
+        }
+        .full-width {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #EFE4CA; /* Cor de fundo */
+            text-align: center; /* Centraliza o texto */
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .music-button {
+            position: absolute; /* Posiciona o botão */
+            top: 20px; /* Distância do topo */
+            right: 20px; /* Distância da direita */
+            width: 50px; /* Largura do botão */
+            height: 50px; /* Altura do botão */
+            background-color: #25989C; /* Nova cor de fundo do botão */
+            color: white; /* Cor do texto do botão */
+            border: none; /* Remove a borda */
+            border-radius: 50%; /* Botão redondo */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+        }
+        .music-button:hover {
+            background-color: #218C8D; /* Cor do botão ao passar o mouse */
+            transform: scale(1.05); /* Aumenta levemente o tamanho do botão */
+        }
+        .play-icon {
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid white; /* Parte esquerda do triângulo */
+            border-top: 10px solid transparent; /* Parte superior do triângulo */
+            border-bottom: 10px solid transparent; /* Parte inferior do triângulo */
+        }
+        .pause-icon {
+            display: flex;
+            gap: 5px; /* Espaço entre as barras */
+        }
+        .pause-icon div {
+            width: 8px; /* Largura das barras */
+            height: 20px; /* Altura das barras */
+            background-color: white; /* Cor das barras */
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="musica/musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    
+    <header>
+        <div class="header-top">
+            <nav class="nav-top">
+                <button id="logoutButton" class="logout-btn" style="display: none;">Logout</button>
+                <ul id="nav-links">
+                    <li><a href="login.html" id="loginLink">Login</a></li>
+                    <li><a href="criar-conta.html" id="createAccountLink">Criar Conta</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo-container">
+            <a href="index.html"><img src="Imagens/LOGO.png" alt="Logo Educa TODOS" class="logo" id="logo"></a>
+            <a href="index.html"><img src="Imagens/LOGO-ALTA-CONTRASTE.png" alt="Logo Alto Contraste Educa TODOS" class="logo-contrast" id="logoContrast"></a>
+        </div>
+        <nav class="nav-main">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="conteudo.html">Conteúdo</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+        <div class="font-adjust-buttons">
+            <button onclick="adjustFontSize(-1)">Diminuir Fonte</button>
+            <button onclick="adjustFontSize(1)">Aumentar Fonte</button>
+            <button onclick="toggleContrast()">Alto Contraste</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="content">
+            <div class="full-width" id="textSection">
+                <h1>Bem-vindo ao Educa TODOS</h1>
+                <p>Aqui você encontra recursos educacionais acessíveis para todos os alunos. O Educa TODOS foi criado com o objetivo de proporcionar uma educação de qualidade, inclusiva e diversificada, que atenda às necessidades de cada estudante.</p>
+                <p>Nossa plataforma oferece uma ampla gama de materiais, desde apostilas e vídeos explicativos até exercícios interativos que ajudam no aprendizado de forma lúdica e envolvente. Todos os conteúdos foram desenvolvidos levando em consideração as diferentes formas de aprendizagem e são adaptáveis para que cada aluno possa aprender no seu próprio ritmo.</p>
+                <p>Além disso, contamos com uma comunidade ativa onde os alunos podem compartilhar experiências, tirar dúvidas e colaborar uns com os outros. Acreditamos que a educação é um caminho que deve ser percorrido em conjunto e estamos aqui para apoiar essa jornada.</p>
+                <p>Explore nosso conteúdo e comece sua trajetória de aprendizado hoje mesmo! Não importa onde você esteja, aqui no Educa TODOS, todos têm a chance de aprender e se desenvolver.</p>
+    
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Educa TODOS. Todos os direitos reservados.</p>
+    </footer>
+
+    <button class="music-button" onclick="toggleMusic()">
+        <div id="musicIcon" class="play-icon"></div>
+    </button>
+    <!-- index.html -->
+ 
+
+
+    <script>
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            if (music.paused) {
+                music.play();
+                musicIcon.className = "pause-icon"; // Muda para o ícone de pause
+                musicIcon.innerHTML = '<div></div><div></div>'; // Adiciona as barras do ícone de pause
+            } else {
+                music.pause();
+                musicIcon.className = "play-icon"; // Muda para o ícone de play
+                musicIcon.innerHTML = ''; // Limpa o conteúdo do ícone de play
+            }
+        }
+    </script>
+    <script>
+        let currentFontSize = 1;
+
+        function adjustFontSize(change) {
+            currentFontSize += change * 0.1;
+            document.body.style.fontSize = currentFontSize + 'em';
+        }
+
+        function toggleContrast() {
+            const body = document.body;
+            body.classList.toggle('high-contrast');
+
+            const textSection = document.getElementById('textSection');
+            if (body.classList.contains('high-contrast')) {
+                textSection.style.backgroundColor = '#000000'; // Muda o fundo do texto para preto
+                textSection.style.color = '#FFFFFF'; // Muda a cor do texto para branco
+            } else {
+                textSection.style.backgroundColor = '#EFE4CA'; // Cor de fundo original
+                textSection.style.color = '#333'; // Cor do texto original
+            }
+
+            const logo = document.getElementById('logo');
+            const logoContrast = document.getElementById('logoContrast');
+
+            if (body.classList.contains('high-contrast')) {
+                logo.style.display = 'none';
+                logoContrast.style.display = 'block'; // Mostra a logo de alto contraste
+            } else {
+                logo.style.display = 'block';
+                logoContrast.style.display = 'none'; // Oculta a logo de alto contraste
+            }
+        }
+
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginLink = document.getElementById('loginLink');
+            const createAccountLink = document.getElementById('createAccountLink');
+
+            if (isLoggedIn) {
+                loginLink.style.display = 'none';
+                createAccountLink.style.display = 'none';
+                document.getElementById('logoutButton').style.display = 'inline';
+            } else {
+                loginLink.style.display = 'inline';
+                createAccountLink.style.display = 'inline';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            checkLoginStatus();
+
+            document.getElementById('logoutButton').addEventListener('click', function () {
+                localStorage.setItem('isLoggedIn', 'false');
+                checkLoginStatus();
+            });
+        });
+    </script>
+
+</body>
+</html>
