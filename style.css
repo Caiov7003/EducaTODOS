@@ -21,7 +21,7 @@ html, body {
     padding: 20px;
     background-color: #EFE4CA;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
     overflow: auto;
 }
@@ -59,47 +59,49 @@ button:focus, a:focus {
     outline-offset: 4px;
 }
 
-.btn:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+button, .btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+    transform: scale(1.05);
 }
 
 /* ===================== */
 /* Modos especiais       */
 /* ===================== */
 .high-contrast {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 .high-contrast a {
-    color: #FFFF00;
+    color: #FFFF00 !important;
 }
 
-.high-contrast .container,
-.high-contrast .quiz-container,
 .high-contrast header,
 .high-contrast footer,
-.high-contrast .content-container {
-    background-color: #000000;
-    color: #FFFFFF;
+.high-contrast .container,
+.high-contrast .quiz-container {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 .high-contrast .quiz-button,
 .high-contrast .toggle-button,
 .high-contrast .font-adjust-buttons button,
 .high-contrast .back-button,
-.high-contrast .nav-main ul li a {
-    background-color: #25989C;
-    color: #FFFFFF;
+.high-contrast nav ul li a {
+    background-color: #25989C !important;
+    color: #FFFFFF !important;
 }
 
 .high-contrast .quiz-button:hover,
 .high-contrast .toggle-button:hover,
 .high-contrast .font-adjust-buttons button:hover,
 .high-contrast .back-button:hover,
-.high-contrast .nav-main ul li a:hover {
-    background-color: #1e7a78;
+.high-contrast nav ul li a:hover {
+    background-color: #1e7a78 !important;
 }
 
 /* ===================== */
@@ -114,10 +116,10 @@ button:focus, a:focus {
 }
 
 /* ===================== */
-/* HEADER - estilo CodePen */
+/* Header                */
 /* ===================== */
 header {
-    background: #333;
+    background-color: #333;
     color: white;
     padding: 15px 0;
     position: relative;
@@ -133,7 +135,7 @@ header .container {
 }
 
 header .logo {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
 }
 
@@ -152,55 +154,25 @@ header nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
     padding: 10px 15px;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header nav ul li a:hover {
     color: #ff9800;
-}
-
-/* Responsivo - menu mobile */
-@media (max-width: 768px) {
-    header nav ul {
-        flex-direction: column;
-        display: none;
-        background-color: #333;
-        width: 100%;
-    }
-
-    header nav ul.show {
-        display: flex;
-    }
-
-    header nav ul li {
-        margin-left: 0;
-        text-align: center;
-    }
+    background-color: rgba(255,255,255,0.1);
 }
 
 /* ===================== */
-/* Música - ocultar texto */
-/* ===================== */
-#musicIcon {
-    display: none !important;
-}
-
-/* ===================== */
-/* Botões de Fonte e Alto Contraste */
+/* Botões de ajuste       */
 /* ===================== */
 .font-adjust-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin: 10px auto;
-    position: sticky;
-    top: 0;
-    background-color: #EFE4CA;
-    padding: 10px;
-    z-index: 999;
-    border-bottom: 1px solid #ccc;
+    margin: 10px 0;
+    flex-wrap: wrap;
 }
 
 .font-adjust-buttons button {
@@ -211,10 +183,53 @@ header nav ul li a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .font-adjust-buttons button:hover {
     background-color: #1e7a78;
 }
 
+/* ===================== */
+/* Responsivo            */
+/* ===================== */
+@media (max-width: 1024px) {
+    header .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+    }
+
+    header nav ul.show {
+        display: flex;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .font-adjust-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* ===================== */
+/* Música (esconde texto)*/
+/* ===================== */
+#musicIcon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
