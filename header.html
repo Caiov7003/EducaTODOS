@@ -3,22 +3,24 @@
     <!-- Logo -->
     <h1 class="logo">EducaTODOS</h1>
 
-    <!-- Botões de Acessibilidade -->
-    <div class="accessibility-buttons">
-      <button onclick="adjustFontSize(-1)" title="Diminuir Fonte">A-</button>
-      <button onclick="adjustFontSize(1)" title="Aumentar Fonte">A+</button>
-      <button id="alto-contraste-btn" title="Alto Contraste">🌓</button>
-    </div>
-
     <!-- Menu -->
     <nav>
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="conteudo.html">Conteúdo</a></li>
         <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="#" id="musicIcon" title="Reproduzir Música">🎵</a></li>
+        <li><a href="login.html" id="loginLink">Login</a></li>
+        <li><button id="logoutButton" style="display:none;">Logout</button></li>
+        <!-- Música (somente ícone, sem texto) -->
+        <li><a href="#" id="musicIcon">🎵</a></li>
       </ul>
     </nav>
+  </div>
+
+  <!-- Botões de Ajuste de Fonte e Alto Contraste -->
+  <div class="font-adjust-buttons">
+    <button onclick="adjustFontSize(-1)">Diminuir Fonte</button>
+    <button onclick="adjustFontSize(1)">Aumentar Fonte</button>
+    <button id="alto-contraste-btn">Ativar Alto Contraste</button>
   </div>
 </header>
