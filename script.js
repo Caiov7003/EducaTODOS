@@ -200,6 +200,11 @@ if (altoContrasteBtn && container) {
             container.style.backgroundColor = 'black';
             container.style.color = 'white';
             altoContrasteBtn.innerText = 'Desativar Alto Contraste';
+            // Remove música do menu mobile
+const musicItem = document.getElementById('musicIcon');
+if (musicItem) musicItem.style.display = 'none';
+
         }
     });
 }
+
