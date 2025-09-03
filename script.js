@@ -2,7 +2,7 @@
 // Ajuste de Fonte
 // =====================
 function adjustFontSize(change) {
-    const content = document.querySelector('.container');
+    const content = document.querySelector('.container') || document.body;
     if (!content) return;
     const currentSize = parseFloat(window.getComputedStyle(content).fontSize);
     content.style.fontSize = (currentSize + change) + 'px';
@@ -16,7 +16,7 @@ function toggleContrast() {
 
     const logoImage = document.getElementById('logoImage') || document.querySelector('.logo');
     const contrastToggle = document.getElementById('alto-contraste-btn');
-    const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button, .nav-main ul li a');
+    const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button, nav ul li a');
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
 
@@ -71,13 +71,12 @@ if (document.getElementById('logoutButton')) {
 }
 
 // =====================
-// Menu Mobile (Header)
+// Menu Mobile
 // =====================
 document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav ul');
     if (!nav) return;
 
-    // Botão de menu mobile
     const toggle = document.createElement('button');
     toggle.textContent = 'Menu';
     toggle.style.color = 'white';
@@ -93,28 +92,26 @@ document.addEventListener('DOMContentLoaded', function() {
     applySavedContrastMode();
     checkLogin();
 
-    // Remove texto do item Música no menu sem remover o ícone
+    // Remove texto do item Música no menu mas mantém o ícone
     const musicItem = document.getElementById('musicIcon');
-    if (musicItem) musicItem.innerText = ''; // mantém só o ícone
+    if (musicItem) musicItem.innerText = '';
 });
 
 // =====================
-// Quiz, Música e Cookies
+// Quiz
 // =====================
 let score = 0;
 function createQuiz(year) {
-    const questions = { /* suas perguntas aqui */ };
+    const questions = {}; // Suas perguntas aqui
     const quizData = questions[year];
     if (!quizData) return '';
 
-    return quizData.map((q, index) => {
-        return `
-            <div>
-                <p>${index + 1}. ${q.question}</p>
-                ${q.options.map(option => `<button onclick="checkAnswer('${option}', '${q.answer}')">${option}</button>`).join('')}
-            </div>
-        `;
-    }).join('');
+    return quizData.map((q, index) => `
+        <div>
+            <p>${index + 1}. ${q.question}</p>
+            ${q.options.map(option => `<button onclick="checkAnswer('${option}', '${q.answer}')">${option}</button>`).join('')}
+        </div>
+    `).join('');
 }
 
 function checkAnswer(selected, correct) {
@@ -125,24 +122,21 @@ function checkAnswer(selected, correct) {
     }
 }
 
+// =====================
 // Música
+// =====================
 const musicIcon = document.getElementById('musicIcon');
 if (musicIcon) {
     musicIcon.addEventListener('click', function() {
-        if (this.classList.contains('play')) {
-            this.classList.remove('play');
-            this.classList.add('pause');
-            this.innerHTML = '⏸️';
-        } else {
-            this.classList.remove('pause');
-            this.classList.add('play');
-            this.innerHTML = '▶️';
-        }
+        this.classList.toggle('play');
+        this.innerHTML = this.classList.contains('play') ? '⏸️' : '▶️';
     });
     musicIcon.classList.add('play');
 }
 
+// =====================
 // Cookies
+// =====================
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -152,17 +146,20 @@ function setCookie(name, value, days) {
     }
     document.cookie = name + "=" + (value||"") + expires + "; path=/";
 }
+
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
-    for (let i=0;i<ca.length;i++) {
+    for (let i=0; i<ca.length; i++) {
         let c = ca[i].trim();
         if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
     }
     return null;
 }
 
-// Botão alto contraste adicional
+// =====================
+// Botão Alto Contraste adicional
+// =====================
 const altoContrasteBtn = document.getElementById('alto-contraste-btn');
 const container = document.querySelector('.content-container');
 if (altoContrasteBtn && container) {
