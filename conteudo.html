@@ -271,34 +271,16 @@
         Seu navegador não suporta o elemento de áudio.
     </audio> 
 
-    <header>
-        <div class="header-top">
-            <nav class="nav-top">
-                <ul id="nav-links">
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="criar-conta.html">Criar Conta</a></li>
-                </ul>
-                <button id="logoutButton" class="logout-btn" style="display: none;">Logout</button>
-            </nav>
-        </div>
-        <div class="logo-container">
-            <a href="index.html"><img src="Imagens/LOGO.png" alt="Logo Educa TODOS" class="logo" id="logo"></a>
-            <a href="index.html"><img src="Imagens/LOGO-ALTA-CONTRASTE.png" alt="Logo Alto Contraste Educa TODOS" class="logo-contrast" id="logoContrast"></a>
-        </div>
-        <nav class="nav-main">
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="conteudo.html">Conteúdo</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-            </ul>
-        </nav>
-        <div class="font-adjust-buttons">
-            <button onclick="alterarTamanhoRadio(0.1), adjustFontSize(-1)">Diminuir Fonte</button>
-            <button onclick="alterarTamanhoRadio(-0.1), adjustFontSize(1)">Aumentar Fonte</button>
-            <button onclick="toggleContrast()">Alto Contraste</button>
-        </div>
-              <button class="music-button" id="musicButton" onclick="toggleMusic()">▶️</button>
-    </header>
+   <div id="header"></div>
+
+<script>
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
+    });
+</script>
+
     <p>Baixe o arquivo Word com o conteúdo para estudo clicando no ícone abaixo:</p>
     <a href="Arquivo/Conteúdo de Estudo.docx" download="Conteudo_Estudo.docx" title="Baixar Conteúdo para Estudo">
         <i class="fas fa-download" style="font-size: 40px; color: #25989C;"></i> <!-- Ícone de download -->
@@ -744,3 +726,4 @@
     </script>
 </body>
 </html>
+
