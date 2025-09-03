@@ -1,181 +1,116 @@
-// Função para aumentar a fonte 
-function increaseFontSize() {
-    let body = document.querySelector('body');
-    let currentSize = window.getComputedStyle(body).fontSize;
-    let newSize = parseFloat(currentSize) + 2; // Aumenta o tamanho da fonte em 2px
-    body.style.fontSize = newSize + 'px';
-}
-
-// Função para diminuir a fonte
-function decreaseFontSize() {
-    let body = document.querySelector('body');
-    let currentSize = window.getComputedStyle(body).fontSize;
-    let newSize = parseFloat(currentSize) - 2; // Diminui o tamanho da fonte em 2px
-    body.style.fontSize = newSize + 'px';
-}
-
-// Função para alternar entre o modo de alto contraste
-function toggleContrast() {
-    const logoImage = document.getElementById('logoImage');
-    const contrastToggle = document.getElementById('contrastToggle');
-    const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button');
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    const contentLogo = document.querySelector('.content-logo'); // Adiciona para a página de conteúdo
-
-    document.body.classList.toggle('high-contrast');
-
-    if (document.body.classList.contains('high-contrast')) {
-        logoImage.src = 'Imagens/LOGO-ALTA-CONTRASTE.png'; // Imagem para alto contraste
-        contrastToggle.textContent = 'Desativar Contraste';
-        localStorage.setItem('contrastMode', 'enabled'); // Salva a preferência no localStorage
-
-        // Atualiza a cor dos botões
-        allButtons.forEach(button => {
-            button.style.backgroundColor = '#25989C'; // Mantém a cor dos botões no alto contraste
-            button.style.color = '#FFFFFF'; // Cor do texto dos botões no alto contraste
-        });
-
-        // Atualiza a cor do cabeçalho e rodapé
-        if (header) header.style.backgroundColor = '#000000';
-        if (footer) footer.style.backgroundColor = '#000000';
-
-        // Atualiza a logo na página de conteúdo
-        if (contentLogo) {
-            contentLogo.src = logoImage.src; // Atualiza a logo da página de conteúdo
-        }
-
-    } else {
-        logoImage.src = 'Imagens/LOGO.png'; // Imagem normal
-        contrastToggle.textContent = 'Ativar Contraste';
-        localStorage.setItem('contrastMode', 'disabled'); // Remove a preferência do localStorage
-
-        // Atualiza a cor dos botões
-        allButtons.forEach(button => {
-            button.style.backgroundColor = '#25989C'; // Cor de fundo normal dos botões
-            button.style.color = '#FFFFFF'; // Cor do texto normal dos botões
-        });
-
-        // Atualiza a cor do cabeçalho e rodapé
-        if (header) header.style.backgroundColor = '';
-        if (footer) footer.style.backgroundColor = '';
-
-        // Atualiza a logo na página de conteúdo
-        if (contentLogo) {
-            contentLogo.src = logoImage.src; // Atualiza a logo da página de conteúdo
-        }
-    }
-}
-
-// Função para aplicar as preferências de contraste armazenadas
-function applySavedContrastMode() {
-    const contrastMode = localStorage.getItem('contrastMode');
-    const logoImage = document.getElementById('logoImage');
-    const contrastToggle = document.getElementById('contrastToggle');
-    const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button');
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    const contentLogo = document.querySelector('.content-logo'); // Adiciona para a página de conteúdo
-
-    if (contrastMode === 'enabled') {
-        document.body.classList.add('high-contrast');
-        logoImage.src = 'Imagens/LOGO-ALTA-CONTRASTE.png'; // Imagem para alto contraste
-        contrastToggle.textContent = 'Desativar Contraste';
-
-        // Atualiza a cor dos botões
-        allButtons.forEach(button => {
-            button.style.backgroundColor = '#25989C'; // Mantém a cor dos botões no alto contraste
-            button.style.color = '#FFFFFF'; // Cor do texto dos botões no alto contraste
-        });
-
-        // Atualiza a cor do cabeçalho e rodapé
-        if (header) header.style.backgroundColor = '#000000';
-        if (footer) footer.style.backgroundColor = '#000000';
-
-        // Atualiza a logo na página de conteúdo
-        if (contentLogo) {
-            contentLogo.src = logoImage.src; // Atualiza a logo da página de conteúdo
-        }
-
-    } else {
-        document.body.classList.remove('high-contrast');
-        logoImage.src = 'Imagens/LOGO.png'; // Imagem normal
-        contrastToggle.textContent = 'Ativar Contraste';
-
-        // Atualiza a cor dos botões
-        allButtons.forEach(button => {
-            button.style.backgroundColor = '#25989C'; // Cor de fundo normal dos botões
-            button.style.color = '#FFFFFF'; // Cor do texto normal dos botões
-        });
-
-        // Atualiza a cor do cabeçalho e rodapé
-        if (header) header.style.backgroundColor = '';
-        if (footer) footer.style.backgroundColor = '';
-
-        // Atualiza a logo na página de conteúdo
-        if (contentLogo) {
-            contentLogo.src = logoImage.src; // Atualiza a logo da página de conteúdo
-        }
-    }
-}
-
-// Função para verificar se o usuário está logado
-function checkLogin() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (!isLoggedIn) {
-        // Redireciona para a página de login se não estiver logado
-        window.location.href = 'login.html'; // Altere para o nome da sua página de login
-    }
-}
-
-// Adiciona o evento de clique ao botão de alternar contraste
-const contrastToggle = document.getElementById('contrastToggle');
-if (contrastToggle) {
-    contrastToggle.addEventListener('click', toggleContrast);
-}
-
-// Aplica o modo de contraste salvo ao carregar a página
-applySavedContrastMode();
-
-// Verifica o login ao carregar a página
-checkLogin();
-document.getElementById('logoutButton').onclick = function() {
-    localStorage.setItem('isLoggedIn', 'false'); // Atualiza o estado de login
-    checkLoginStatus(); // Atualiza a interface
-    window.location.href = 'login.html'; // Redireciona para a página de login
-};
-questions.forEach((q, index) => {
-    const questionElement = document.createElement("div");
-    questionElement.style.marginBottom = "20px"; // Espaço entre as perguntas
-    questionElement.innerHTML = `<p>${q.question}</p>`;
-    q.answers.forEach((answer, i) => {
-        questionElement.innerHTML += `<label style="display: block;"><input type="radio" name="question${index}" value="${i}"> ${answer}</label>`;
-    });
-    quizQuestions.appendChild(questionElement);
-});
-function startQuiz() {
-    const quizSection = document.getElementById("quizSection");
-    const quizQuestions = document.getElementById("quizQuestions");
-    quizQuestions.innerHTML = ""; // Limpa questões anteriores
-
-    // [Suas perguntas aqui]
-
-    quizSection.classList.add("visible"); // Adiciona a classe para mostrar o quiz
-}
+// =====================
+// Ajuste de Fonte
+// =====================
 function adjustFontSize(change) {
     const content = document.querySelector('.container');
     const currentSize = parseFloat(window.getComputedStyle(content).fontSize);
     content.style.fontSize = (currentSize + change) + 'px';
 }
-let score = 0;
 
+// =====================
+// Modo Alto Contraste
+// =====================
+function toggleContrast() {
+    document.body.classList.toggle('high-contrast');
+
+    const logoImage = document.getElementById('logoImage') || document.querySelector('.logo');
+    const contrastToggle = document.getElementById('contrastToggle') || document.getElementById('alto-contraste-btn');
+    const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button, .nav-main ul li a');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+
+    if (document.body.classList.contains('high-contrast')) {
+        if (logoImage) logoImage.src = 'Imagens/LOGO-ALTA-CONTRASTE.png';
+        if (contrastToggle) contrastToggle.innerText = 'Desativar Contraste';
+        localStorage.setItem('contrastMode', 'enabled');
+        allButtons.forEach(b => { b.style.backgroundColor = '#25989C'; b.style.color = '#FFFFFF'; });
+        if (header) header.style.backgroundColor = '#000000';
+        if (footer) footer.style.backgroundColor = '#000000';
+    } else {
+        if (logoImage) logoImage.src = 'Imagens/LOGO.png';
+        if (contrastToggle) contrastToggle.innerText = 'Ativar Contraste';
+        localStorage.setItem('contrastMode', 'disabled');
+        allButtons.forEach(b => { b.style.backgroundColor = '#25989C'; b.style.color = '#FFFFFF'; });
+        if (header) header.style.backgroundColor = '';
+        if (footer) footer.style.backgroundColor = '';
+    }
+}
+
+function applySavedContrastMode() {
+    if (localStorage.getItem('contrastMode') === 'enabled') {
+        document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
+    }
+}
+
+// =====================
+// Login / Logout
+// =====================
+function checkLogin() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const loginLink = document.getElementById('loginLink');
+    const logoutButton = document.getElementById('logoutButton');
+
+    if (isLoggedIn === 'true') {
+        if (loginLink) loginLink.style.display = 'none';
+        if (logoutButton) logoutButton.style.display = 'inline-block';
+    } else {
+        if (loginLink) loginLink.style.display = 'inline-block';
+        if (logoutButton) logoutButton.style.display = 'none';
+    }
+}
+
+if (document.getElementById('logoutButton')) {
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        localStorage.setItem('isLoggedIn', 'false');
+        checkLogin();
+        window.location.href = 'login.html';
+    });
+}
+
+// =====================
+// Menu Mobile (Header CodePen)
+// =====================
+document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('nav ul');
+    if (!nav) return;
+
+    const toggle = document.createElement('button');
+    toggle.textContent = 'Menu';
+    toggle.style.color = 'white';
+    toggle.style.background = 'transparent';
+    toggle.style.border = 'none';
+    toggle.style.cursor = 'pointer';
+    toggle.style.fontSize = '16px';
+    document.querySelector('nav').prepend(toggle);
+
+    toggle.addEventListener('click', () => nav.classList.toggle('show'));
+
+    // Aplica contraste salvo
+    applySavedContrastMode();
+
+    // Checa login ao carregar
+    checkLogin();
+});
+
+// =====================
+// Quiz, Música e Cookies
+// =====================
+// Você mantém todas as funções do quiz, música, cookies e validação de senha
+// como estavam antes, sem alterações importantes.
+
+// Exemplo simplificado para quiz:
+let score = 0;
 function createQuiz(year) {
     const questions = {
         // suas perguntas aqui
     };
 
     const quizData = questions[year];
-    const quizHtml = quizData.map((q, index) => {
+    if (!quizData) return '';
+
+    return quizData.map((q, index) => {
         return `
             <div>
                 <p>${index + 1}. ${q.question}</p>
@@ -183,8 +118,6 @@ function createQuiz(year) {
             </div>
         `;
     }).join('');
-
-    return quizHtml;
 }
 
 function checkAnswer(selected, correct) {
@@ -194,34 +127,30 @@ function checkAnswer(selected, correct) {
     } else {
         alert('Incorreto. A resposta correta é: ' + correct);
     }
-
-    // Verifique se todas as perguntas foram respondidas
     const questionsCount = document.querySelectorAll('#quizQuestions div').length;
     if (score + document.querySelectorAll('.answered').length >= questionsCount) {
         alert(`Seu resultado: ${score} de ${questionsCount}`);
     }
 }
-document.getElementById('musicIcon').addEventListener('click', function() {
-    if (this.classList.contains('play')) {
-        this.classList.remove('play');
-        this.classList.add('pause');
-        this.innerHTML = '⏸️'; // Muda o ícone para Pause
-    } else {
-        this.classList.remove('pause');
-        this.classList.add('play');
-        this.innerHTML = '▶️'; // Muda o ícone para Play
-    }
-});
 
-// Inicializa com o ícone de Play
-document.getElementById('musicIcon').classList.add('play');
-const password = document.getElementById('password').value;
-
-if (password.length < 8) {
-    message.textContent = 'A senha deve ter pelo menos 8 caracteres.';
-    return; // Não prossegue se a senha não for válida
+// Música
+const musicIcon = document.getElementById('musicIcon');
+if (musicIcon) {
+    musicIcon.addEventListener('click', function() {
+        if (this.classList.contains('play')) {
+            this.classList.remove('play');
+            this.classList.add('pause');
+            this.innerHTML = '⏸️';
+        } else {
+            this.classList.remove('pause');
+            this.classList.add('play');
+            this.innerHTML = '▶️';
+        }
+    });
+    musicIcon.classList.add('play');
 }
-// Função para definir um cookie
+
+// Cookies
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -231,54 +160,34 @@ function setCookie(name, value, days) {
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
-
-// Função para obter um cookie
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length);
     }
     return null;
 }
 
-if (password.length < 8) {
-    message.textContent = 'A senha deve ter pelo menos 8 caracteres.';
-} else {
-    // Código para adicionar o usuário
-}
-const altoContrasteBtn = document.getElementById('alto-contraste-btn'); // Certifique-se de que o ID está correto
-const container = document.querySelector('.content-container'); // Seleciona o container
-
-// Função para ativar/desativar alto contraste
-altoContrasteBtn.addEventListener('click', function () {
-    const isHighContrast = document.body.style.backgroundColor === 'black'; // Verifica se está em alto contraste
-
-    if (isHighContrast) {
-        // Desativa alto contraste
-        document.body.style.backgroundColor = '#EFE4CA'; // Cor original do fundo
-        document.body.style.color = 'black'; // Cor original do texto
-        container.style.backgroundColor = '#EFE4CA'; // Fundo do container original
-        container.style.color = 'black'; // Cor do texto do container original
-        altoContrasteBtn.innerText = 'Ativar Alto Contraste'; // Atualiza o texto do botão
+// Validação de senha
+const passwordInput = document.getElementById('password');
+const message = document.getElementById('message');
+if (passwordInput && message) {
+    const password = passwordInput.value;
+    if (password.length < 8) {
+        message.textContent = 'A senha deve ter pelo menos 8 caracteres.';
     } else {
-        // Ativa alto contraste
-        document.body.style.backgroundColor = 'black'; // Cor de fundo em alto contraste
-        document.body.style.color = 'white'; // Cor do texto em alto contraste
-        container.style.backgroundColor = 'black'; // Cor de fundo do container em alto contraste
-        container.style.color = 'white'; // Cor do texto do container em alto contraste
-        altoContrasteBtn.innerText = 'Desativar Alto Contraste'; // Atualiza o texto do botão
+        message.textContent = '';
     }
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const altoContrasteBtn = document.getElementById('alto-contraste-btn');
-    const container = document.querySelector('.content-container');
+}
 
-    altoContrasteBtn.addEventListener('click', function () {
+// Botão alto contraste adicional (para páginas que têm #alto-contraste-btn)
+const altoContrasteBtn = document.getElementById('alto-contraste-btn');
+const container = document.querySelector('.content-container');
+if (altoContrasteBtn && container) {
+    altoContrasteBtn.addEventListener('click', function() {
         const isHighContrast = document.body.style.backgroundColor === 'black';
-
         if (isHighContrast) {
             document.body.style.backgroundColor = '#EFE4CA';
             document.body.style.color = 'black';
@@ -288,10 +197,9 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             document.body.style.backgroundColor = 'black';
             document.body.style.color = 'white';
-            container.style.backgroundColor = 'black'; // Aqui garante que o fundo do container fica preto
-            container.style.color = 'white'; 
+            container.style.backgroundColor = 'black';
+            container.style.color = 'white';
             altoContrasteBtn.innerText = 'Desativar Alto Contraste';
         }
     });
-});
-
+}
