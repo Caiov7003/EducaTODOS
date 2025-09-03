@@ -40,8 +40,6 @@ function toggleContrast() {
 function applySavedContrastMode() {
     if (localStorage.getItem('contrastMode') === 'enabled') {
         document.body.classList.add('high-contrast');
-    } else {
-        document.body.classList.remove('high-contrast');
     }
 }
 
@@ -77,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav ul');
     if (!nav) return;
 
+    // Botão menu mobile
     const toggle = document.createElement('button');
     toggle.textContent = 'Menu';
     toggle.style.color = 'white';
@@ -88,14 +87,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     toggle.addEventListener('click', () => nav.classList.toggle('show'));
 
+    // Remove texto do item Música (mantendo o ícone)
+    const musicItem = document.getElementById('musicIcon');
+    if (musicItem) musicItem.innerText = '';
+
     // Aplica contraste salvo e checa login
     applySavedContrastMode();
     checkLogin();
-
-    // Remove texto do item Música no menu mas mantém o ícone
-    const musicItem = document.getElementById('musicIcon');
-    if (musicItem) musicItem.innerText = '';
 });
+
+// =====================
+// Botão Alto Contraste
+// =====================
+const altoContrasteBtn = document.getElementById('alto-contraste-btn');
+if (altoContrasteBtn) {
+    altoContrasteBtn.addEventListener('click', toggleContrast);
+}
 
 // =====================
 // Quiz
@@ -158,25 +165,9 @@ function getCookie(name) {
 }
 
 // =====================
-// Botão Alto Contraste adicional
+// Inicialização
 // =====================
-const altoContrasteBtn = document.getElementById('alto-contraste-btn');
-const container = document.querySelector('.content-container');
-if (altoContrasteBtn && container) {
-    altoContrasteBtn.addEventListener('click', function() {
-        const isHighContrast = document.body.style.backgroundColor === 'black';
-        if (isHighContrast) {
-            document.body.style.backgroundColor = '#EFE4CA';
-            document.body.style.color = 'black';
-            container.style.backgroundColor = '#EFE4CA';
-            container.style.color = 'black';
-            altoContrasteBtn.innerText = 'Ativar Alto Contraste';
-        } else {
-            document.body.style.backgroundColor = 'black';
-            document.body.style.color = 'white';
-            container.style.backgroundColor = 'black';
-            container.style.color = 'white';
-            altoContrasteBtn.innerText = 'Desativar Alto Contraste';
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', function() {
+    applySavedContrastMode();
+    checkLogin();
+});
