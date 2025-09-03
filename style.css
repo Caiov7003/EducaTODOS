@@ -191,5 +191,27 @@ header nav ul li a:hover {
 #musicIcon {
     display: none !important;
 }
+.font-adjust-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.font-adjust-buttons button {
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: #25989C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.font-adjust-buttons button:hover {
+    background-color: #1e7a78;
+}
+
 
 
