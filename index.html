@@ -244,33 +244,16 @@
         Seu navegador não suporta o elemento de áudio.
     </audio>
     
-    <header>
-        <div class="header-top">
-            <nav class="nav-top">
-                <button id="logoutButton" class="logout-btn" style="display: none;">Logout</button>
-                <ul id="nav-links">
-                    <li><a href="login.html" id="loginLink">Login</a></li>
-                    <li><a href="criar-conta.html" id="createAccountLink">Criar Conta</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="logo-container">
-            <a href="index.html"><img src="Imagens/LOGO.png" alt="Logo Educa TODOS" class="logo" id="logo"></a>
-            <a href="index.html"><img src="Imagens/LOGO-ALTA-CONTRASTE.png" alt="Logo Alto Contraste Educa TODOS" class="logo-contrast" id="logoContrast"></a>
-        </div>
-        <nav class="nav-main">
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="conteudo.html">Conteúdo</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-            </ul>
-        </nav>
-        <div class="font-adjust-buttons">
-            <button onclick="adjustFontSize(-1)">Diminuir Fonte</button>
-            <button onclick="adjustFontSize(1)">Aumentar Fonte</button>
-            <button onclick="toggleContrast()">Alto Contraste</button>
-        </div>
-    </header>
+   <div id="header"></div>
+
+<script>
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
+    });
+</script>
+
 
     <main>
         <section id="content">
@@ -371,3 +354,4 @@
 
 </body>
 </html>
+
