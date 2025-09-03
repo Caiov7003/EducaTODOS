@@ -16,30 +16,23 @@ function toggleContrast() {
 
     const logoImage = document.getElementById('logoImage') || document.querySelector('.logo');
     const contrastToggle = document.getElementById('alto-contraste-btn');
-    const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button, nav ul li a');
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
 
     if (document.body.classList.contains('high-contrast')) {
         if (logoImage) logoImage.src = 'Imagens/LOGO-ALTA-CONTRASTE.png';
         if (contrastToggle) contrastToggle.innerText = 'Desativar Contraste';
         localStorage.setItem('contrastMode', 'enabled');
-        allButtons.forEach(b => { b.style.backgroundColor = '#25989C'; b.style.color = '#FFFFFF'; });
-        if (header) header.style.backgroundColor = '#000000';
-        if (footer) footer.style.backgroundColor = '#000000';
     } else {
         if (logoImage) logoImage.src = 'Imagens/LOGO.png';
         if (contrastToggle) contrastToggle.innerText = 'Ativar Contraste';
         localStorage.setItem('contrastMode', 'disabled');
-        allButtons.forEach(b => { b.style.backgroundColor = '#25989C'; b.style.color = '#FFFFFF'; });
-        if (header) header.style.backgroundColor = '';
-        if (footer) footer.style.backgroundColor = '';
     }
 }
 
 function applySavedContrastMode() {
     if (localStorage.getItem('contrastMode') === 'enabled') {
         document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
     }
 }
 
@@ -69,40 +62,40 @@ if (document.getElementById('logoutButton')) {
 }
 
 // =====================
-// Menu Mobile
+// Menu Mobile e Inicialização
 // =====================
 document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav ul');
-    if (!nav) return;
+    if (nav) {
+        // Botão menu mobile
+        const toggle = document.createElement('button');
+        toggle.textContent = 'Menu';
+        toggle.style.color = 'white';
+        toggle.style.background = 'transparent';
+        toggle.style.border = 'none';
+        toggle.style.cursor = 'pointer';
+        toggle.style.fontSize = '16px';
+        document.querySelector('nav').prepend(toggle);
 
-    // Botão menu mobile
-    const toggle = document.createElement('button');
-    toggle.textContent = 'Menu';
-    toggle.style.color = 'white';
-    toggle.style.background = 'transparent';
-    toggle.style.border = 'none';
-    toggle.style.cursor = 'pointer';
-    toggle.style.fontSize = '16px';
-    document.querySelector('nav').prepend(toggle);
+        toggle.addEventListener('click', () => nav.classList.toggle('show'));
+    }
 
-    toggle.addEventListener('click', () => nav.classList.toggle('show'));
+    // Aplica contraste salvo
+    applySavedContrastMode();
 
-    // Remove texto do item Música (mantendo o ícone)
+    // Checa login
+    checkLogin();
+
+    // Remove texto do item Música no menu, mantém o ícone
     const musicItem = document.getElementById('musicIcon');
     if (musicItem) musicItem.innerText = '';
-
-    // Aplica contraste salvo e checa login
-    applySavedContrastMode();
-    checkLogin();
+    
+    // Botão de Alto Contraste
+    const altoContrasteBtn = document.getElementById('alto-contraste-btn');
+    if (altoContrasteBtn) {
+        altoContrasteBtn.addEventListener('click', toggleContrast);
+    }
 });
-
-// =====================
-// Botão Alto Contraste
-// =====================
-const altoContrasteBtn = document.getElementById('alto-contraste-btn');
-if (altoContrasteBtn) {
-    altoContrasteBtn.addEventListener('click', toggleContrast);
-}
 
 // =====================
 // Quiz
@@ -163,11 +156,3 @@ function getCookie(name) {
     }
     return null;
 }
-
-// =====================
-// Inicialização
-// =====================
-document.addEventListener('DOMContentLoaded', function() {
-    applySavedContrastMode();
-    checkLogin();
-});
