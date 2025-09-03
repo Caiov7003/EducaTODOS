@@ -7,7 +7,7 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    overflow-y: auto; /* Permite rolagem vertical */
+    overflow-y: auto;
     font-size: 16px;
 }
 
@@ -79,7 +79,8 @@ button:focus, a:focus {
 .high-contrast .container,
 .high-contrast .quiz-container,
 .high-contrast header,
-.high-contrast footer {
+.high-contrast footer,
+.high-contrast .content-container {
     background-color: #000000;
     color: #FFFFFF;
 }
@@ -101,24 +102,6 @@ button:focus, a:focus {
     background-color: #1e7a78;
 }
 
-.dark-mode {
-    background-color: #000000;
-    color: #FFFFFF;
-}
-
-.dark-mode a {
-    color: #FFCC00;
-}
-
-.dark-mode button {
-    background-color: #333333;
-    color: #FFFFFF;
-}
-
-.dark-mode button:hover {
-    background-color: #555555;
-}
-
 /* ===================== */
 /* Quiz Section          */
 /* ===================== */
@@ -134,9 +117,10 @@ button:focus, a:focus {
 /* HEADER - estilo CodePen */
 /* ===================== */
 header {
-    background: #333; /* cor de fundo do header */
+    background: #333;
     color: white;
     padding: 15px 0;
+    position: relative;
 }
 
 header .container {
@@ -182,20 +166,41 @@ header nav ul li a:hover {
     header nav ul {
         flex-direction: column;
         display: none;
+        background-color: #333;
+        width: 100%;
     }
 
     header nav ul.show {
         display: flex;
     }
+
+    header nav ul li {
+        margin-left: 0;
+        text-align: center;
+    }
 }
+
+/* ===================== */
+/* Música - ocultar texto */
+/* ===================== */
 #musicIcon {
     display: none !important;
 }
+
+/* ===================== */
+/* Botões de Fonte e Alto Contraste */
+/* ===================== */
 .font-adjust-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 10px;
+    margin: 10px auto;
+    position: sticky;
+    top: 0;
+    background-color: #EFE4CA;
+    padding: 10px;
+    z-index: 999;
+    border-bottom: 1px solid #ccc;
 }
 
 .font-adjust-buttons button {
@@ -212,6 +217,4 @@ header nav ul li a:hover {
 .font-adjust-buttons button:hover {
     background-color: #1e7a78;
 }
-
-
 
