@@ -3,6 +3,7 @@
 // =====================
 function adjustFontSize(change) {
     const content = document.querySelector('.container');
+    if (!content) return;
     const currentSize = parseFloat(window.getComputedStyle(content).fontSize);
     content.style.fontSize = (currentSize + change) + 'px';
 }
@@ -14,7 +15,7 @@ function toggleContrast() {
     document.body.classList.toggle('high-contrast');
 
     const logoImage = document.getElementById('logoImage') || document.querySelector('.logo');
-    const contrastToggle = document.getElementById('contrastToggle') || document.getElementById('alto-contraste-btn');
+    const contrastToggle = document.getElementById('alto-contraste-btn');
     const allButtons = document.querySelectorAll('.quiz-button, .toggle-button, .font-adjust-buttons button, .back-button, .nav-main ul li a');
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -70,12 +71,13 @@ if (document.getElementById('logoutButton')) {
 }
 
 // =====================
-// Menu Mobile (Header CodePen)
+// Menu Mobile (Header)
 // =====================
 document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav ul');
     if (!nav) return;
 
+    // Botão de menu mobile
     const toggle = document.createElement('button');
     toggle.textContent = 'Menu';
     toggle.style.color = 'white';
@@ -87,26 +89,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     toggle.addEventListener('click', () => nav.classList.toggle('show'));
 
-    // Aplica contraste salvo
+    // Aplica contraste salvo e checa login
     applySavedContrastMode();
-
-    // Checa login ao carregar
     checkLogin();
+
+    // Remove texto do item Música no menu sem remover o ícone
+    const musicItem = document.getElementById('musicIcon');
+    if (musicItem) musicItem.innerText = ''; // mantém só o ícone
 });
 
 // =====================
 // Quiz, Música e Cookies
 // =====================
-// Você mantém todas as funções do quiz, música, cookies e validação de senha
-// como estavam antes, sem alterações importantes.
-
-// Exemplo simplificado para quiz:
 let score = 0;
 function createQuiz(year) {
-    const questions = {
-        // suas perguntas aqui
-    };
-
+    const questions = { /* suas perguntas aqui */ };
     const quizData = questions[year];
     if (!quizData) return '';
 
@@ -121,12 +118,7 @@ function createQuiz(year) {
 }
 
 function checkAnswer(selected, correct) {
-    if (selected === correct) {
-        score++;
-        alert('Correto!');
-    } else {
-        alert('Incorreto. A resposta correta é: ' + correct);
-    }
+    if (selected === correct) score++;
     const questionsCount = document.querySelectorAll('#quizQuestions div').length;
     if (score + document.querySelectorAll('.answered').length >= questionsCount) {
         alert(`Seu resultado: ${score} de ${questionsCount}`);
@@ -155,34 +147,22 @@ function setCookie(name, value, days) {
     let expires = "";
     if (days) {
         const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    document.cookie = name + "=" + (value||"") + expires + "; path=/";
 }
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
+    for (let i=0;i<ca.length;i++) {
         let c = ca[i].trim();
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
     }
     return null;
 }
 
-// Validação de senha
-const passwordInput = document.getElementById('password');
-const message = document.getElementById('message');
-if (passwordInput && message) {
-    const password = passwordInput.value;
-    if (password.length < 8) {
-        message.textContent = 'A senha deve ter pelo menos 8 caracteres.';
-    } else {
-        message.textContent = '';
-    }
-}
-
-// Botão alto contraste adicional (para páginas que têm #alto-contraste-btn)
+// Botão alto contraste adicional
 const altoContrasteBtn = document.getElementById('alto-contraste-btn');
 const container = document.querySelector('.content-container');
 if (altoContrasteBtn && container) {
@@ -200,11 +180,6 @@ if (altoContrasteBtn && container) {
             container.style.backgroundColor = 'black';
             container.style.color = 'white';
             altoContrasteBtn.innerText = 'Desativar Alto Contraste';
-            // Remove música do menu mobile
-const musicItem = document.getElementById('musicIcon');
-if (musicItem) musicItem.style.display = 'none';
-
         }
     });
 }
-
