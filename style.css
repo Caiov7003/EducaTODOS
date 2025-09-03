@@ -71,8 +71,8 @@ button, .btn {
 /* Modos especiais       */
 /* ===================== */
 .high-contrast {
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
+    background-color: #000 !important;
+    color: #FFF !important;
 }
 
 .high-contrast a {
@@ -82,24 +82,21 @@ button, .btn {
 .high-contrast header,
 .high-contrast footer,
 .high-contrast .container,
+.high-contrast .content-container,
 .high-contrast .quiz-container {
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
+    background-color: #000 !important;
+    color: #FFF !important;
 }
 
-.high-contrast .quiz-button,
-.high-contrast .toggle-button,
+.high-contrast button,
 .high-contrast .font-adjust-buttons button,
-.high-contrast .back-button,
 .high-contrast nav ul li a {
     background-color: #25989C !important;
-    color: #FFFFFF !important;
+    color: #FFF !important;
 }
 
-.high-contrast .quiz-button:hover,
-.high-contrast .toggle-button:hover,
+.high-contrast button:hover,
 .high-contrast .font-adjust-buttons button:hover,
-.high-contrast .back-button:hover,
 .high-contrast nav ul li a:hover {
     background-color: #1e7a78 !important;
 }
@@ -190,6 +187,17 @@ header nav ul li a:hover {
 }
 
 /* ===================== */
+/* Música (apenas ícone) */
+/* ===================== */
+#musicIcon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* ===================== */
 /* Responsivo            */
 /* ===================== */
 @media (max-width: 1024px) {
@@ -221,15 +229,4 @@ header nav ul li a:hover {
         flex-direction: column;
         gap: 5px;
     }
-}
-
-/* ===================== */
-/* Música (esconde texto)*/
-/* ===================== */
-#musicIcon {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    vertical-align: middle;
 }
