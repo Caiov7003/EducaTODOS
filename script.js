@@ -18,17 +18,20 @@ function toggleContrast() {
   const isHighContrast = document.body.classList.contains('high-contrast');
 
   if (contrastToggle) {
-    contrastToggle.innerText = isHighContrast ? 'Desativar Contraste' : 'Ativar Contraste';
+    contrastToggle.innerText = isHighContrast
+      ? 'Desativar Modo Alto Contraste'
+      : 'Ativar Modo Alto Contraste';
   }
 
   localStorage.setItem('contrastMode', isHighContrast ? 'enabled' : 'disabled');
 }
 
 function applySavedContrastMode() {
-  if (localStorage.getItem('contrastMode') === 'enabled') {
+  const isHighContrast = localStorage.getItem('contrastMode') === 'enabled';
+  if (isHighContrast) {
     document.body.classList.add('high-contrast');
     const btn = document.getElementById('alto-contraste-btn');
-    if (btn) btn.innerText = 'Desativar Contraste';
+    if (btn) btn.innerText = 'Desativar Modo Alto Contraste';
   }
 }
 
@@ -65,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.addEventListener('click', () => nav.classList.toggle('show'));
   }
 
-  // Alto contraste
+  // Botão de Alto Contraste
   const altoContrasteBtn = document.getElementById('alto-contraste-btn');
   if (altoContrasteBtn) altoContrasteBtn.addEventListener('click', toggleContrast);
   applySavedContrastMode();
@@ -73,15 +76,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Login
   checkLogin();
 
-  // Ícone música
+  // Ícone de Música
   const musicItem = document.getElementById('musicIcon');
   if (musicItem) {
-    musicItem.innerHTML = '🎵';
+    musicItem.innerHTML = '▶️'; // Começa com ícone de play
     musicItem.addEventListener('click', function () {
       this.classList.toggle('play');
       this.innerHTML = this.classList.contains('play') ? '⏸️' : '▶️';
     });
-    musicItem.classList.add('play');
   }
 });
 
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // =====================
 let score = 0;
 function createQuiz(year) {
-  const questions = {}; // Suas perguntas aqui
+  const questions = {}; // Adicione perguntas aqui
   const quizData = questions[year];
   if (!quizData) return '';
 
