@@ -1,25 +1,23 @@
 /* ===================== */
-/* Reset e Configuração  */
+/* Estilos Gerais        */
 /* ===================== */
-* {
+body {
+    background-color: #EFE4CA;
+    font-family: Arial, sans-serif;
+    color: #000; /* Texto padrão preto */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-y: auto;
+    font-size: 16px;
 }
 
 html, body {
     height: auto;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    background-color: #EFE4CA;
-    color: #333;
-    overflow-y: auto;
 }
 
-/* ===================== */
-/* Layout Containers     */
-/* ===================== */
-.container {
+.container,
+.content-container,
+.full-width {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
@@ -30,16 +28,75 @@ html, body {
     overflow: auto;
 }
 
-.content-container {
-    padding: 20px;
+footer {
     background-color: #EFE4CA;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
-.full-width {
-    width: 100%;
-    padding: 20px;
-    background-color: #EFE4CA;
-    box-sizing: border-box;
+/* ===================== */
+/* Botões e interações   */
+/* ===================== */
+button:focus, a:focus {
+    outline: 2px solid #FFCC00;
+    outline-offset: 4px;
+}
+
+button, .btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+    transform: scale(1.05);
+}
+
+/* ===================== */
+/* Modo Alto Contraste    */
+/* ===================== */
+.high-contrast {
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+
+.high-contrast a {
+    color: #FFFF00 !important;
+}
+
+.high-contrast header,
+.high-contrast footer,
+.high-contrast .container,
+.high-contrast .content-container,
+.high-contrast .full-width {
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+
+.high-contrast button,
+.high-contrast .font-adjust-buttons button,
+.high-contrast nav ul li a {
+    background-color: #25989C !important;
+    color: #FFF !important;
+}
+
+.high-contrast button:hover,
+.high-contrast .font-adjust-buttons button:hover,
+.high-contrast nav ul li a:hover {
+    background-color: #1e7a78 !important;
+}
+
+/* ===================== */
+/* Quiz Section          */
+/* ===================== */
+#quizSection {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    max-height: 700px;
+    overflow-y: auto;
 }
 
 /* ===================== */
@@ -49,6 +106,7 @@ header {
     background-color: #333;
     color: white;
     padding: 15px 0;
+    position: relative;
 }
 
 header .container {
@@ -70,7 +128,10 @@ header nav ul {
     display: flex;
     margin: 0;
     padding: 0;
-    gap: 20px;
+}
+
+header nav ul li {
+    margin-left: 20px;
 }
 
 header nav ul li a {
@@ -79,7 +140,7 @@ header nav ul li a {
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: all 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header nav ul li a:hover {
@@ -88,44 +149,7 @@ header nav ul li a:hover {
 }
 
 /* ===================== */
-/* Footer                */
-/* ===================== */
-footer {
-    background-color: #EFE4CA;
-    color: #333;
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-    position: relative;
-    width: 100%;
-}
-
-/* ===================== */
-/* Botões                */
-/* ===================== */
-button, .btn {
-    padding: 10px 15px;
-    font-size: 1em;
-    background-color: #25989C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-button:hover, .btn:hover {
-    background-color: #1e7a78;
-    transform: scale(1.05);
-}
-
-button:focus, a:focus {
-    outline: 2px solid #FFCC00;
-    outline-offset: 4px;
-}
-
-/* ===================== */
-/* Ajuste de Fonte       */
+/* Botões de ajuste       */
 /* ===================== */
 .font-adjust-buttons {
     display: flex;
@@ -135,56 +159,22 @@ button:focus, a:focus {
     flex-wrap: wrap;
 }
 
-/* ===================== */
-/* Alto Contraste        */
-/* ===================== */
-.high-contrast {
-    background-color: #000 !important;
-    color: #FFF !important;
+.font-adjust-buttons button {
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: #25989C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.high-contrast a {
-    color: #FFFF00 !important;
-}
-
-.high-contrast header,
-.high-contrast footer,
-.high-contrast .container,
-.high-contrast .content-container,
-.high-contrast .quiz-container {
-    background-color: #000 !important;
-    color: #FFF !important;
-}
-
-.high-contrast button,
-.high-contrast nav ul li a {
-    background-color: #25989C !important;
-    color: #FFF !important;
-}
-
-.high-contrast button:hover,
-.high-contrast nav ul li a:hover {
-    background-color: #1e7a78 !important;
+.font-adjust-buttons button:hover {
+    background-color: #1e7a78;
 }
 
 /* ===================== */
-/* Quiz Section          */
-/* ===================== */
-#quizSection {
-    display: none;
-    margin-top: 20px;
-    text-align: center;
-    max-height: 700px;
-    overflow-y: auto;
-}
-
-#quizSection button {
-    margin: 5px;
-    padding: 8px 12px;
-}
-
-/* ===================== */
-/* Música (Ícone)        */
+/* Música (apenas ícone) */
 /* ===================== */
 #musicIcon {
     display: inline-block;
@@ -196,7 +186,7 @@ button:focus, a:focus {
 }
 
 /* ===================== */
-/* Responsividade        */
+/* Responsivo            */
 /* ===================== */
 @media (max-width: 1024px) {
     header .container {
@@ -217,8 +207,10 @@ button:focus, a:focus {
     }
 
     header nav ul li {
+        margin-left: 0;
         width: 100%;
         text-align: center;
+        margin-bottom: 5px;
     }
 
     .font-adjust-buttons {
