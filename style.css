@@ -149,7 +149,25 @@ header nav ul li a:hover {
 }
 
 /* ===================== */
-/* Botões de ajuste       */
+/* Botão de Alto Contraste */
+/* ===================== */
+#alto-contraste-btn {
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: #25989C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#alto-contraste-btn:hover {
+    background-color: #1e7a78;
+}
+
+/* ===================== */
+/* Botões de ajuste de fonte */
 /* ===================== */
 .font-adjust-buttons {
     display: flex;
@@ -218,3 +236,4 @@ header nav ul li a:hover {
         gap: 5px;
     }
 }
+
