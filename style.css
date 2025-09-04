@@ -4,7 +4,7 @@
 body {
     background-color: #EFE4CA;
     font-family: Arial, sans-serif;
-    color: #000; /* Texto padrão preto */
+    color: #000;
     margin: 0;
     padding: 0;
     overflow-y: auto;
@@ -28,6 +28,9 @@ html, body {
     overflow: auto;
 }
 
+/* ===================== */
+/* Footer                */
+/* ===================== */
 footer {
     background-color: #EFE4CA;
     color: #000;
@@ -39,7 +42,7 @@ footer {
 }
 
 /* ===================== */
-/* Botões e interações   */
+/* Botões e Interações   */
 /* ===================== */
 button:focus, a:focus {
     outline: 2px solid #FFCC00;
@@ -167,7 +170,7 @@ header nav ul li a:hover {
 }
 
 /* ===================== */
-/* Botões de ajuste de fonte */
+/* Botões de Ajuste de Fonte */
 /* ===================== */
 .font-adjust-buttons {
     display: flex;
@@ -235,5 +238,12 @@ header nav ul li a:hover {
         flex-direction: column;
         gap: 5px;
     }
+}
+
+/* ===================== */
+/* Fonte Responsiva      */
+/* ===================== */
+html {
+    font-size: 16px; /* Será ajustada pelo script.js */
 }
 
