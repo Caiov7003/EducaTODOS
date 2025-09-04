@@ -19,32 +19,31 @@ function toggleContrast() {
 }
 
 function applySavedContrastMode() {
-  if (localStorage.getItem('contrastMode') === 'enabled') {
+  const contrastEnabled = localStorage.getItem('contrastMode') === 'enabled';
+  if (contrastEnabled) {
     document.body.classList.add('high-contrast');
-    const btn = document.getElementById('alto-contraste-btn');
-    if (btn) btn.innerText = 'Desativar Contraste';
+  } else {
+    document.body.classList.remove('high-contrast');
   }
+
+  const btn = document.getElementById('alto-contraste-btn');
+  if (btn) btn.innerText = contrastEnabled ? 'Desativar Contraste' : 'Ativar Contraste';
 }
 
 // =====================
 // Login / Logout
 // =====================
 function checkLogin() {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const loginLink = document.getElementById('loginLink');
   const logoutButton = document.getElementById('logoutButton');
 
-  if (isLoggedIn === 'true') {
-    if (loginLink) loginLink.style.display = 'none';
-    if (logoutButton) logoutButton.style.display = 'inline-block';
-  } else {
-    if (loginLink) loginLink.style.display = 'inline-block';
-    if (logoutButton) logoutButton.style.display = 'none';
-  }
+  if (loginLink) loginLink.style.display = isLoggedIn ? 'none' : 'inline-block';
+  if (logoutButton) logoutButton.style.display = isLoggedIn ? 'inline-block' : 'none';
 }
 
 if (document.getElementById('logoutButton')) {
-  document.getElementById('logoutButton').addEventListener('click', function () {
+  document.getElementById('logoutButton').addEventListener('click', () => {
     localStorage.setItem('isLoggedIn', 'false');
     checkLogin();
     window.location.href = 'login.html';
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => nav.classList.toggle('show'));
   }
 
-  // Botão alto contraste
+  // Botão Alto Contraste
   const altoBtn = document.getElementById('alto-contraste-btn');
   if (altoBtn) altoBtn.addEventListener('click', toggleContrast);
 
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Login
   checkLogin();
 
-  // Música
+  // Música (apenas ícone)
   const musicIcon = document.getElementById('musicIcon');
   if (musicIcon) {
     musicIcon.innerHTML = '🎵';
