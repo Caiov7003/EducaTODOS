@@ -12,26 +12,17 @@ function adjustFontSize(change) {
 // Modo Alto Contraste
 // =====================
 function toggleContrast() {
-  document.body.classList.toggle('high-contrast');
-
-  const contrastToggle = document.getElementById('alto-contraste-btn');
-  const isHighContrast = document.body.classList.contains('high-contrast');
-
-  if (contrastToggle) {
-    contrastToggle.innerText = isHighContrast
-      ? 'Desativar Modo Alto Contraste'
-      : 'Ativar Modo Alto Contraste';
-  }
-
-  localStorage.setItem('contrastMode', isHighContrast ? 'enabled' : 'disabled');
+  const isActive = document.body.classList.toggle('high-contrast');
+  const btn = document.getElementById('alto-contraste-btn');
+  if (btn) btn.innerText = isActive ? 'Desativar Contraste' : 'Ativar Contraste';
+  localStorage.setItem('contrastMode', isActive ? 'enabled' : 'disabled');
 }
 
 function applySavedContrastMode() {
-  const isHighContrast = localStorage.getItem('contrastMode') === 'enabled';
-  if (isHighContrast) {
+  if (localStorage.getItem('contrastMode') === 'enabled') {
     document.body.classList.add('high-contrast');
     const btn = document.getElementById('alto-contraste-btn');
-    if (btn) btn.innerText = 'Desativar Modo Alto Contraste';
+    if (btn) btn.innerText = 'Desativar Contraste';
   }
 }
 
@@ -52,8 +43,19 @@ function checkLogin() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Botão Menu Mobile
+if (document.getElementById('logoutButton')) {
+  document.getElementById('logoutButton').addEventListener('click', function () {
+    localStorage.setItem('isLoggedIn', 'false');
+    checkLogin();
+    window.location.href = 'login.html';
+  });
+}
+
+// =====================
+// Inicialização
+// =====================
+document.addEventListener('DOMContentLoaded', () => {
+  // Menu Mobile
   const nav = document.querySelector('nav ul');
   if (nav) {
     const toggle = document.createElement('button');
@@ -64,26 +66,28 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.style.cursor = 'pointer';
     toggle.style.fontSize = '16px';
     document.querySelector('nav').prepend(toggle);
-
     toggle.addEventListener('click', () => nav.classList.toggle('show'));
   }
 
-  // Botão de Alto Contraste
-  const altoContrasteBtn = document.getElementById('alto-contraste-btn');
-  if (altoContrasteBtn) altoContrasteBtn.addEventListener('click', toggleContrast);
+  // Botão alto contraste
+  const altoBtn = document.getElementById('alto-contraste-btn');
+  if (altoBtn) altoBtn.addEventListener('click', toggleContrast);
+
+  // Aplica contraste salvo
   applySavedContrastMode();
 
   // Login
   checkLogin();
 
-  // Ícone de Música
-  const musicItem = document.getElementById('musicIcon');
-  if (musicItem) {
-    musicItem.innerHTML = '▶️'; // Começa com ícone de play
-    musicItem.addEventListener('click', function () {
+  // Música
+  const musicIcon = document.getElementById('musicIcon');
+  if (musicIcon) {
+    musicIcon.innerHTML = '🎵';
+    musicIcon.addEventListener('click', function () {
       this.classList.toggle('play');
       this.innerHTML = this.classList.contains('play') ? '⏸️' : '▶️';
     });
+    musicIcon.classList.add('play');
   }
 });
 
@@ -92,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // =====================
 let score = 0;
 function createQuiz(year) {
-  const questions = {}; // Adicione perguntas aqui
+  const questions = {}; // Preencha aqui
   const quizData = questions[year];
   if (!quizData) return '';
 
